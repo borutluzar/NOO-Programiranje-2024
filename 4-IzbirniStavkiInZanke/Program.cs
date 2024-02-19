@@ -26,7 +26,7 @@ namespace SelectStatementsAndLoops
                 Console.WriteLine("Zdaj se pa bo!");
             }
 
-            // Če izbiram med dvema ukazoma glede na dani pogoj,
+            // Če izbiramo med dvema ukazoma glede na dani pogoj,
             // stavku if dodamo še else
             x = 3;
             if (x > 4)

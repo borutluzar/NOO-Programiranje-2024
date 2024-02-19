@@ -6,7 +6,8 @@
         {
             // ***********************************************
             // Aritmetične operacije
-                        
+            Console.WriteLine($"\nAritmetične operacije:\n");
+
             // Poznamo pet osnovnih operatorjev
             int vsota = 3 + 4; // Rezultat: 7
             Console.WriteLine($"Operator + na številskih vrednosti deluje kot seštevanje: 3 + 4 = {vsota}");
@@ -55,6 +56,8 @@
             // Označevanje z oklepaji seveda še bolj prav pride pri kombiniranju različnih tipov vrednosti
             double izraz1 = (double)(3 / 4) * 5; // Rezultat: 0
             double izraz2 = ((double)3 / 4) * 5; // Rezultat: 3,75
+            Console.WriteLine($"Vrednost spremenljivke {nameof(izraz1)}: {izraz1}");
+            Console.WriteLine($"Vrednost spremenljivke {nameof(izraz2)}: {izraz2}");
 
 
             // Operator + lahko uporabimo tudi nad neštevilskimi vrednostmi,
@@ -85,6 +88,7 @@
 
             // ***********************************************
             // Knjižnica Math
+            Console.WriteLine($"\nKnjižnica Math:\n");
 
             // Funkcija Pow za izračun potence dveh števil se skriva v knjižnici Math
             int osnova = 2;
@@ -106,30 +110,41 @@
 
             // ***********************************************
             // Logične operacije
+            Console.WriteLine($"\nLogične operacije:\n");
 
             // Za logične operacije uporabljamo operatorje ! (negacija),
             // && (logični IN) in || (logični ALI)
             // Rezultat takšne operacije je vedno tipa bool (torej true ali false)
             bool sonce = true;
+            Console.WriteLine($"Vrednost spremenljivke {nameof(sonce)} je {sonce}.");
             bool sneg = false;
+            Console.WriteLine($"Vrednost spremenljivke {nameof(sneg)} je {sneg}.");
+
             bool logicniIN = sonce && sneg; // Rezultat: false
+            Console.WriteLine($"Vrednost spremenljivke {nameof(logicniIN)} je {logicniIN}.");
             bool logicniALI = sonce || sneg; // Rezultat: true
+            Console.WriteLine($"Vrednost spremenljivke {nameof(logicniALI)} je {logicniALI}.");
             bool negacijaSneg = !sneg; // Rezultat: true
+            Console.WriteLine($"Vrednost spremenljivke {nameof(negacijaSneg)} je {negacijaSneg}.");
 
 
 
             // ***********************************************
             // Enakosti in primerjanja
+            Console.WriteLine($"\nEnakosti in primerjanja:\n");
 
             // Primerjanja vrednosti izvajamo z operatorji <, >, <=, >=, ==
             // Tudi te operacije vračajo vrednosti tipa bool
             bool manjsi = 13 < 14; // Rezultat: true
+            Console.WriteLine($"Vrednost spremenljivke {nameof(manjsi)} je {manjsi}.");
             bool vecjiAliEnak = 13 >= 14; // Rezultat: false
+            Console.WriteLine($"Vrednost spremenljivke {nameof(vecjiAliEnak)} je {vecjiAliEnak}.");
 
             // Primerjamo lahko tudi nize
             // Dvojni enačaj uporabimo, ker je enojni že rezerviran za prirejanja
             string beseda = "Caramba!";
             bool enakiBesedi = beseda == "Caramba!"; // Rezultat: true
+            Console.WriteLine($"Vrednost spremenljivke {nameof(enakiBesedi)} je {enakiBesedi}.");
 
 
             Console.Read();

@@ -8,13 +8,20 @@ namespace VariablesAndTypes
         {
             // Definirajmo nekaj spremenljivk različnih tipov
 
+            // Spremenljivke definiramo tako, da povemo:
+            // - njihov tip (to je vrsta vrednosti, ki jih spremenljivka lahko sprejema)
+            // - njihovo ime
+            // - opcijsko pa jim lahko določimo tudi vrednost,
+            // ki jo zapišemo za enačajem
+            // Primer:
+            // TIP  IME  =  VREDNOST
 
             // ***********************************************
-            // Začnimo s spremenljivkami, ki kot
+            // Začnimo z definicijami spremenljivk, ki kot
             // vrednosti sprejemajo cela števila:
             Console.WriteLine($"Izpis celoštevilskih spremenljivk: \n");
 
-            // Najbolj običajen tip je int.            
+            // Najbolj običajen (pogost) tip je int.            
             // Vrednost lahko zapišemo v desetiškem sistemu...
             int celoStevilo = 21;
             Console.WriteLine($"Izpis vrednosti spremenljivke celoStevilo v desetiškem sistemu: {celoStevilo}");
@@ -62,8 +69,8 @@ namespace VariablesAndTypes
             realnoStevilo = 3.14D;
             Console.WriteLine($"Izpis vrednosti spremenljivke tipa double s pripono D: {realnoStevilo}");
 
-            // Imamo še dva druga tipa, vsakemu moramo pri vrednosti pripisati
-            // ustrezno pripono.
+            // Imamo še dva druga tipa, vsakemu MORAMO pri vrednosti pripisati
+            // ustrezno pripono (poskusite, kaj se zgodi, če tega ne storimo).
             float realnoSteviloFloat = 3.14F; // Uporabimo pripono F
             Console.WriteLine($"Izpis vrednosti spremenljivke tipa float: {realnoSteviloFloat}");
 
