@@ -11,10 +11,10 @@ namespace Introduction
         // dane vhodne podatke izvedejo zaporedje ukazov in vrnejo rezultat
         static void Main(string[] args)
         {
-            // Spodnji ukaz ob zagonu izpiše besedilo v narekovajih - Pozdravljen, svet!
+            // Spodnji ukaz 'WriteLine' ob zagonu v ukazni vrstici izpiše besedilo v narekovajih - Pozdravljen, svet!
             Console.WriteLine("Pozdravljen, svet!");
             
-            // Ukaz Read zadrži okno ukazne vrstice (pričakuje vnos uporabnika)
+            // Ukaz 'Read' zadrži okno ukazne vrstice (pričakuje vnos uporabnika)
             Console.Read();
         }
     }

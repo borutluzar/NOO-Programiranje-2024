@@ -19,10 +19,10 @@ namespace VariablesAndTypes
             int celoStevilo = 21;
             Console.WriteLine($"Izpis vrednosti spremenljivke celoStevilo v desetiškem sistemu: {celoStevilo}");
             // ali v dvojiškem...
-            celoStevilo = 0b10101;
+            celoStevilo = 0b10101; // predpona 0b
             Console.WriteLine($"Izpis vrednosti spremenljivke celoStevilo v dvojiškem sistemu: {celoStevilo}");
             // ali v šestnajstiškem.
-            celoStevilo = 0x15;
+            celoStevilo = 0x15; // predpona 0x
             Console.WriteLine($"Izpis vrednosti spremenljivke celoStevilo v šestnajstiškem sistemu: {celoStevilo}");
 
             // Cela števila lahko definiramo tudi z drugimi tipi,
