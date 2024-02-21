@@ -14,7 +14,7 @@ namespace SelectStatementsAndLoops
 
             // Ko želimo nek ukaz izvesti samo, če je izpolnjen dan pogoj,
             // uporabimo stavek if
-            int x = 3;            
+            int x = 3;
             if (x > 4)
             {
                 Console.WriteLine("Tole se ne bo izpisalo!");
@@ -67,10 +67,12 @@ namespace SelectStatementsAndLoops
             {
                 Console.WriteLine($"{test} je manjše kot 6");
             }
+
             if (test == 6) // true - se izvede
             {
                 Console.WriteLine($"{test} je enako kot 6");
             }
+
             if (test > 5) // true - se izvede
             {
                 Console.WriteLine($"{test} je večje kot 5");
@@ -79,6 +81,7 @@ namespace SelectStatementsAndLoops
 
             // Kadar v stavku if - else zgolj prirejamo vrednost neki 
             // spremenljivki, lahko uporabimo ternarni operator.
+            // Sintaksa: POGOJ  ?  vrednost, če pogoj TRUE    :    vrednost, če pogoj FALSE 
             int temperatura = 9;
             string rezultat = temperatura < 5 ? "Vreme je normalno" : "Vreme je nenormalno";
             Console.WriteLine($"{rezultat}");
@@ -92,7 +95,7 @@ namespace SelectStatementsAndLoops
             // namesto strukture if - else if raje uporabimo stavek switch.
             // .Pri njem v glavi podamo spremenljivko, za katero opazujemo vrednost, 
             // nato pa v stavkih case določimo, kaj se v vsakem od možnih primerov lahko zgodi.
-            int danVTednu = 3;
+            int danVTednu = 2;
             switch (danVTednu)
             {
                 case 1:
@@ -204,26 +207,34 @@ namespace SelectStatementsAndLoops
                 Console.WriteLine($"Beseda je {beseda}!");
             }
 
+            // Ekvivalent z zanko for bi bil (ampak sintakse za tabele in sezname še ne poznamo):
+            for (i = 0; i < besede.Count; i++)
+            {
+                Console.WriteLine($"Beseda je {besede[i]}!");
+            }
+
 
             // ZGLED 1
-            // Za dano velikost stranice kvadrata a želimo na zaslon izrisati kvadrat iz zvezdic.
+            // Za dano velikost stranice kvadrata $a$ želimo na zaslon izrisati kvadrat iz zvezdic.
             // Stranice kvadrata bodo zvezdice, notranjost pa bomo predstavili s presledki.
             // V prvi vrstici bomo tako izpisali $a$ zvezdic, v naslednjih bo zvezdica samo prvi in zadnji znak,
             // ostali bodo presledki, medtem ko bodo v zadnji vrstici spet samo zvezdice.
             // V vsaki vrstici bo $a$ znakov.Za njihov izris bo poskrbela posebna zanka, ki bo gnezdena v
             // zanki, katera bo skrbela za prehod v novo vrstico.
             // Primer rešene naloge je naslednji:
-            int a = 5;
-            for (i = 0; i < a; i++)
+            int a = 6;
+            for (i = 0; i < a; i++) // Zanka, ki ob vsakem prehodu ustvari vrstico 
             {
-                for (int j = 0; j < a; j++)
+                for (int j = 0; j < a; j++) // // Zanka, ki ob vsakem prehodu zapiše en znak
                 {
                     char znakec = ' ';
                     if (j == 0 || i == 0 || j == a - 1 || i == a - 1)
+                    {
                         znakec = '*';
-                    Console.Write(znakec);
+                    }
+                    Console.Write(znakec); // Uporabimo ukaz Write, da ne skočimo v novo vrstico!
                 }
-                Console.WriteLine();
+                Console.WriteLine(); // Ko končamo zapis ene vrstice, gremo v novo
             }
 
 
