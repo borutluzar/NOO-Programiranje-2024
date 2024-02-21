@@ -18,7 +18,7 @@
             int produkt = 3 * 4; // Rezultat: 12
             Console.WriteLine($"Operator * na številskih vrednosti deluje kot množenje: 3 * 4 = {produkt}");
 
-            int kvocient = 3 / 4; // Rezultat: 0
+            int kvocient = 3 / 4; // Rezultat: 0  (rezultat deljenja dveh celih števil je vedno celo število!)
             Console.WriteLine($"Operator / na številskih vrednosti deluje kot deljenje: 3 / 4 = {kvocient}");
 
             int ostanek = 3 % 4; // Rezultat: 3

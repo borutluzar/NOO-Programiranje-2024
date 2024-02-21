@@ -106,6 +106,7 @@ namespace VariablesAndTypes
 
             // Uporabljamo lahko tudi posebne znake (ubežna zaporedja)
             // Npr. znak za novo vrstico zapišemo z \n
+            // Npr. znak za tabulator zapišemo z \t
             string naslov = "Ime in priimek\nUlica in hišna številka\nPošta";
             Console.WriteLine($"Izpis vrednosti spremenljivke z ubežnimi zaporedji:\n{naslov}");
 

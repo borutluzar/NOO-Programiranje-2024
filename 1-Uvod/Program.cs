@@ -4,7 +4,7 @@ namespace Introduction
 {
     // Razredi so posebne strukture, o katerih več povemo v posebnem poglavju
     class Program
-    {
+    {   
         // Program se vedno začne izvajati v metodi Main,
         // metode pa so sklopi kode, ki jih najdemo v razredih in
         // predstavljajo 'algoritme' oziroma 'postopke', ki glede na 
