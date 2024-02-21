@@ -113,7 +113,7 @@
 
             // Funkcija Pow za izračun potence dveh števil se skriva v knjižnici Math
             int osnova = 2;
-            int eksponent = 3;            
+            int eksponent = 3;
             double potenca = Math.Pow(osnova, eksponent);
             Console.WriteLine($"Potenca {osnova} na {eksponent} je {potenca}.");
 
@@ -148,6 +148,13 @@
             bool negacijaSneg = !sneg; // Rezultat: true
             Console.WriteLine($"Vrednost spremenljivke {nameof(negacijaSneg)} je {negacijaSneg}.");
 
+            bool seEnaNegacijaSneg = !(sneg || sonce && sneg);
+            // Operacija && veže močneje kot ||  (podobno kot * in +)
+            // Najprej: sonce && sneg -> false
+            // Potem: sneg || sonce && sneg -> sneg || false -> false
+            // Na koncu: !(false) -> true
+            Console.WriteLine($"Vrednost spremenljivke {nameof(seEnaNegacijaSneg)} je {seEnaNegacijaSneg}.");
+
 
 
             // ***********************************************
@@ -164,7 +171,7 @@
             // Primerjamo lahko tudi nize
             // Dvojni enačaj uporabimo, ker je enojni že rezerviran za prirejanja
             string beseda = "Caramba!";
-            bool enakiBesedi = beseda == "Caramba!"; // Rezultat: true
+            bool enakiBesedi = beseda == "caramba!"; // Rezultat: true
             Console.WriteLine($"Vrednost spremenljivke {nameof(enakiBesedi)} je {enakiBesedi}.");
 
 
