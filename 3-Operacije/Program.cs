@@ -9,7 +9,23 @@
             Console.WriteLine($"\nAritmetične operacije:\n");
 
             // Poznamo pet osnovnih operatorjev
-            int vsota = 3 + 4; // Rezultat: 7
+            int vsota = 3 + 4; // Rezultat: 7            
+            // Ukaz se izvede po posameznih elementih:
+            // 1. celoten ukaz -> int vsota = 3 + 4;
+            //     2. definicija spremenljivke -> int vsota;
+            //     3. prirejanje -> vsota = 3 + 4
+            //             4. izračunamo izraz na desni -> 3 + 4 (= 7)
+            //             5. priredimo vrednost -> vsota = 7
+            // V skladu ukazov to izgleda takole:
+            // Kličemo oz. v sklad dodamo:  int vsota = 3 + 4;
+            // Kličemo oz. dodamo:   int vsota;
+            // Izvedem oz. pobrišem iz sklada: int vsota; [vsota je definirana]
+            // Kličemo oz. dodamo: vsota = 3 + 4;
+            // Kličemo oz. dodamo: 3 + 4
+            // Izvedem oz. pobrišem iz sklada: 3 + 4 (rezultat je 7)
+            // Izvedem oz. pobrišem iz sklada: vsota = 7 (spremenljivka je dobila vrednost)
+            // Izvedem oz. pobrišem iz sklada celoten začetni ukaz: int vsota = 3 + 4;
+
             Console.WriteLine($"Operator + na številskih vrednosti deluje kot seštevanje: 3 + 4 = {vsota}");
 
             int razlika = 3 - 4; // Rezultat: -1    
