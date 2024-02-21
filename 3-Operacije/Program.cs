@@ -53,7 +53,7 @@
             // Ko vrednost beremo iz spremenljivke,
             // pripone ne moremo uporabiti, zato prevedbo zapišemo takole:
             int deljenec = 3;
-            realenKvocient = (double)deljenec / 4;
+            realenKvocient = deljenec / (double)4;
             Console.WriteLine($"Operator / na vsaj eni realni vrednosti vrne: 3 / 4 = {realenKvocient}");
 
             // Opozorimo še na to, da ne zadošča imeti ustrezno definirane spremenljivke
@@ -65,33 +65,38 @@
             // Pri izvedbi več zaporednih operacij je najboljši način,
             // da vrstni red njihovega izvajanja določimo s pomočjo oklepajev
             int rezultat = (3 + 4) * 7;
+            //rezultat = 3 / 4 * 7; // Najprej: 3 / 4 = 0, potem pa še 0 * 7 = 0
             Console.WriteLine($"Vrstni red določimo s pomočjo oklepajev. Rezultat v tem primeru je {rezultat}.");
             rezultat = 3 + (4 * 7);
             Console.WriteLine($"W tem primeru pa {rezultat}.");
 
             // Označevanje z oklepaji seveda še bolj prav pride pri kombiniranju različnih tipov vrednosti
-            double izraz1 = (double)(3 / 4) * 5; // Rezultat: 0
+            double izraz1 = (double)(3 / 4) * 5; // Rezultat: 0,0
             double izraz2 = ((double)3 / 4) * 5; // Rezultat: 3,75
             Console.WriteLine($"Vrednost spremenljivke {nameof(izraz1)}: {izraz1}");
             Console.WriteLine($"Vrednost spremenljivke {nameof(izraz2)}: {izraz2}");
 
-
             // Operator + lahko uporabimo tudi nad neštevilskimi vrednostmi,
             // npr. nad nizi
-            string beseda1 = "Danes ";
+            string beseda1 = "Danes";
             string beseda2 = "je lep dan";
             string vsotaBesed = beseda1 + beseda2;
             Console.WriteLine($"Vsota dveh besed je združitev obeh v eno: {vsotaBesed}");
 
             // Določanje zaporedja operacij je še posebej pomembno pri kombiniranju s stringi:
             Console.WriteLine("Danes je " + 10 + 5 + " stopinj celzija");
-            Console.WriteLine("Danes je " + (10 + 5) + " stopinj celzija");
+            // "Danes je " + 10 -> "Danes je 10"
+            // "Danes je 10" + 5 -> "Danes je 105"
+            // "Danes je 105" + " stopinj celzija" -> "Danes je 105 stopinj celzija"
 
+            Console.WriteLine("Danes je " + (10 + 5) + " stopinj celzija");
+            // Z interpolacijo je manj dvoumnosti:
+            Console.WriteLine($"Danes je {10 + 5} stopinj celzija");
 
             // Poznamo še dodatne operatorje za izvajanje aritmetičnih operacij
             int stevec = 1;
             Console.WriteLine($"Trenutna vrednost spremenljivke stevec je {stevec}");
-            stevec++; // Ekvivalenten ukaz kot stevec = stevec + 1;
+            stevec++; // Ekvivalenten ukaz kot stevec = stevec + 1; 
             Console.WriteLine($"Trenutna vrednost spremenljivke stevec je {stevec}");
             stevec += 2; // Ekvivalenten ukaz kot stevec = stevec + 2;
             Console.WriteLine($"Trenutna vrednost spremenljivke stevec je {stevec}");
@@ -108,7 +113,7 @@
 
             // Funkcija Pow za izračun potence dveh števil se skriva v knjižnici Math
             int osnova = 2;
-            int eksponent = 3;
+            int eksponent = 3;            
             double potenca = Math.Pow(osnova, eksponent);
             Console.WriteLine($"Potenca {osnova} na {eksponent} je {potenca}.");
 
