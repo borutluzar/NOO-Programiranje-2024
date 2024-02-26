@@ -181,7 +181,7 @@ namespace ArraysAndLists
 
             // Še izpišemo rezultat algoritma
             Console.WriteLine($"Med izbranimi števili je "
-                + "{seznamSodih.Count} sodih.");
+                + $"{seznamSodih.Count} sodih.");
 
 
             Console.Read();

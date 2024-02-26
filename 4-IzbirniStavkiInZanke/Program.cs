@@ -237,7 +237,7 @@ namespace SelectStatementsAndLoops
                 Console.WriteLine(); // Ko končamo zapis ene vrstice, gremo v novo
             }
 
-
+            
 
             // ***********************************************
             // Stavka break in continue
@@ -247,32 +247,55 @@ namespace SelectStatementsAndLoops
 
             // Za primer vzemimo zanko while, ki uporabnika sprašuje po rešitvi danega problema
             // in prebira njegove odgovore, dokler ne odgovori pravilno.
-            // Odgovore uporabnika prebiramo z ukazom Console.ReadLine(), ki vrača vrednost tipa string.
-            Console.WriteLine("Kdo je najboljši nogometaš na svetu?");
+            // Odgovore uporabnika prebiramo z ukazom Console.ReadLine(), ki vrača vrednost tipa string.            
             while (true)
             {
+                Console.WriteLine("Kdo je najboljši nogometaš na svetu?");
                 string odgovor = Console.ReadLine();
                 if (odgovor == "Messi")
                 {
                     Console.WriteLine("Odgovor je pravilen!");
-                    break;
+                    break; // Prekinemo izvajanje zanke
                 }
                 else
+                {
                     Console.WriteLine("Odgovor ni pravilen!");
+                }
             }
+
+            // To isto sicer lahko implementiramo tudi brez stavka break:
+            bool nadaljuj = true;
+            while (nadaljuj /* Na začetku je true */)
+            {
+                Console.WriteLine("Kdo je najboljši nogometaš na svetu?");
+                string odgovor = Console.ReadLine();
+                if (odgovor == "Messi")
+                {
+                    Console.WriteLine("Odgovor je pravilen!");
+                    nadaljuj = false; // Nadomestimo break
+                }
+                else
+                {
+                    Console.WriteLine("Odgovor ni pravilen!");
+                }
+            }
+            // V zgornjem primeru ni velike razlike od uporabe break,
+            // lahko pa nastane, če imamo v zanki bolj kompleksno kodo
+            // oziroma več ukazov, pri katerih moramo preverjati,
+            // če želimo zanko prekiniti...
 
 
             // Če zanke ne želimo zaključiti popolnoma, ampak samo zaključiti izvajanje trenutnega koraka
             // in nadaljevati z naslednjim, uporabimo stavek continue.
             int stDeljivihZVsajEnim = 0;
-            for (i = 1; i < 100; i++)
+            for (int ii = 1; ii < 100; ii++)
             {
-                if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0)
+                if (ii % 2 == 0 || ii % 3 == 0 || ii % 5 == 0)
                 {
                     stDeljivihZVsajEnim++;
                     continue;
                 }
-                Console.WriteLine($"Število {i} ni deljivo z 2, 3 ali 5.");
+                Console.WriteLine($"Število {ii} ni deljivo z 2, 3 ali 5.");
             }
             Console.WriteLine($"Število deljivih z 2, 3 ali 5 je {stDeljivihZVsajEnim}.");
 
