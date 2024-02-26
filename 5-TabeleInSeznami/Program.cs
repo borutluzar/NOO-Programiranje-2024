@@ -40,7 +40,8 @@ namespace ArraysAndLists
 
 
             // ZGLED 1
-            // Pripravimo zapis stanja na varčevalnem računu v tabelo v danem številu mesecev ob dani obrestni meri in glavnici.
+            // Pripravimo zapis stanja na varčevalnem računu v tabelo
+            // v danem številu mesecev ob dani obrestni meri in glavnici.
 
             // Določimo število mesecev varčevanja
             int months = 24;
@@ -52,7 +53,7 @@ namespace ArraysAndLists
             // Definiramo tabelo za shranjevanje
             decimal[] amountsPerMonth = new decimal[months + 1]; // 24 mesecev + začetek
             amountsPerMonth[0] = principalAmount;
-            for (int i = 1; i < amountsPerMonth.Length; i++)
+            for (int i = 1; i < amountsPerMonth.Length; i++) // Dolžino tabele pridobimo z lastnostjo Length
             {
                 // Vsak mesec se znesek poveča za znesek prejšnjega meseca
                 // plus obresti
@@ -65,6 +66,10 @@ namespace ArraysAndLists
                 Console.WriteLine($"V {countMonth}. mesecu imamo na računu {amount:0.00} evrov.");
                 countMonth++;
             }
+
+            // Še enkrat izpišimo zadnjo vrednost za vajo:
+            Console.WriteLine($"V zadnjem mesecu imamo na računu " +
+                $"{amountsPerMonth[amountsPerMonth.Length - 1]:0.00} evrov.");
 
 
 
@@ -90,9 +95,10 @@ namespace ArraysAndLists
 
 
             // ZGLED
+            Console.WriteLine("\n\n\n");
             // Oglejmo si primer izrisa mreže z danimi znaki na izbranih poljih
             // (spodnja koda med znakoma '#' in '.' izbira naključno).
-            int width = 25;
+            int width = 20;
             int height = 10;
             // Uporabimo objekt za slučajno generiranje števil
             Random rnd = new Random();
@@ -129,6 +135,25 @@ namespace ArraysAndLists
             Console.WriteLine(mreza[0].Length);
 
 
+            // Preverimo razred Random pri metu kocke
+            int[] tblSestevki = new int[6];
+            int stevec = 1_000_000;
+
+            for (int i = 0; i < stevec; i++)
+            {
+                int met = rnd.Next(1, 7); // Vržemo kocko
+                tblSestevki[met - 1] = tblSestevki[met - 1] + 1; // Povečamo seštevek na ustreznem polju
+            }
+
+            Console.WriteLine($"\nŠtevilo seštevkov po posameznih vrednostih: \n");
+            int stPik = 1;
+            foreach (int vrednost in tblSestevki)
+            {
+                Console.WriteLine($"Število metov {stPik} je {vrednost} " +
+                    $"(relativni delež je {(double)vrednost / stevec:0.####})");
+                stPik++;
+            }
+
 
             // ***********************************************
             // Seznami
@@ -149,10 +174,15 @@ namespace ArraysAndLists
             // Če želimo prepisati vrednost na točno določenem indeksu,
             // to storimo enako kot pri tabelah
             lstShopping[0] = "ananas";
+            lstShopping[3] = "avokado";
 
             // Uporabimo lahko še ukaz RemoveAt, ki vrednost z določenega
             // indeksa izbriše
             lstShopping.RemoveAt(1);
+
+            // Če želimo izbrisati točno določen element,
+            // to storimo z ukazom Remove
+            lstShopping.Remove("avokado");
 
             foreach (string article in lstShopping)
             {
@@ -160,14 +190,38 @@ namespace ArraysAndLists
                 // POZOR - V zanki foreach ne moremo spreminjati tabele,
                 // po kateri iteriramo niti elementa, ki vsebuje iterativne vrednosti!
                 // Npr. ukaz:
-                // lstShopping.RemoveAt(0);
+                //lstShopping.RemoveAt(0);
                 // javi napako ob izvajanju!
             }
+
+            // Odstranjevanje elementa lahko naredimo
+            // s pomočjo zanke for
+            for (int i = 0; lstShopping.Count > 0; /* Ta stavek izpustimo, ker ga ne rabimo */)
+            {
+                Console.WriteLine(lstShopping[i]);
+                lstShopping.RemoveAt(i);
+            }
+            Console.WriteLine($"V našem seznamu je {lstShopping.Count} elementov.");
+
+            // Primer 2: enako kot zgoraj, vendar z izpisovanjem
+            // od zadnjega k prvemu elementu
+            lstShopping.Add("brokoli");
+            lstShopping.Add("zelena");
+            lstShopping.Add("riž");
+            lstShopping.Add("koleraba");
+
+            for (int i = lstShopping.Count - 1; i >= 0; i--)
+            {
+                Console.WriteLine(lstShopping[i]);
+                lstShopping.RemoveAt(i);
+            }
+            Console.WriteLine($"V našem seznamu je {lstShopping.Count} elementov.");
 
 
             // ZGLED
             // 	Oglejmo si primer dodajanja sodih števil v seznam, pri čemer jih izbiramo
-            // 	med 100 naključno izbranimi števili, kar pomeni, da v naprej ne poznamo števila polj seznama.
+            // 	med 100 naključno izbranimi števili, kar pomeni, da v naprej ne poznamo
+            // 	števila polj seznama.
             rnd = new Random();
             List<int> seznamSodih = new List<int>();
             for (int i = 0; i < 100; i++)
