@@ -27,9 +27,53 @@ namespace Methods
             int sum = SumThree(1, 10, 100);
             Console.WriteLine($"Naš rezultat je {sum}");
 
+            // Zgled: Metoda za izračun indeksa telesne mase
+            /*
+            Console.Write("Vpišite svojo telesno maso (v kg): ");
+            double mass = double.Parse(Console.ReadLine());
+            Console.Write("Vpišite svojo telesno višino (v m): ");
+            double height = double.Parse(Console.ReadLine());
+
+            double bmi = BodyMassIndex(mass,height);
+            Console.WriteLine($"Indeks naše telesne mase je: {bmi:0.00}");
+
             // Klic metode Quotient
             double quotient = Quotient(12, 13);
             Console.WriteLine($"Rezultat deljenja je {quotient:0.000}");
+            */
+
+            // Zgled - Naloga 1 iz drugega izpita 2023
+            Izpit2023_Naloga1();
+
+
+            // Izjeme
+
+            // Pokličimo metodo GetOperator (vpeljava stavkov throw in try-catch)
+            try
+            {
+                string oprt = GetOperator(2);
+                Console.WriteLine($"Operator je {oprt}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Prišlo je do napake:\n{ex.Message}");
+            }
+
+            // Primer napake pri delu s tabelo
+            string[] tblZivali = new string[5] { "puran", "glista", "svinja", "zebra", "mravljinčar" };
+
+            try
+            {
+                Console.WriteLine($"{tblZivali[5]}");
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine($"Napaka! Smo izven intervala vrednosti:\n{ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Prišlo je do neke popolnoma druge napake:\n{ex.Message}");
+            }
 
             // In še klic metode GetPatientsHeight
             int patientsHeight = GetPatientsHeight();
@@ -42,13 +86,26 @@ namespace Methods
             //WriteGCDForPairs(15);
 
             // Pokličimo še metodo, ki lovi izjeme
-            //CatchException();
+            CatchException();
 
             // Še ena funkcija z nekaj več opravili
             ComputingQuestions();
 
             Console.Read();
         }
+
+        /// <summary>
+        /// Izračuna indeks telesne mase.
+        /// </summary>
+        /// <param name="mass">Telesna masa</param>
+        /// <param name="height">Telesna višina</param>
+        /// <returns>BMI</returns>
+        static double BodyMassIndex(double mass, double height)
+        {
+            double bmi = mass / (height * height);
+            return bmi;
+        }
+
 
         /// <summary>
         /// Metoda kot parametra prejme dve celi števili,
@@ -151,7 +208,7 @@ namespace Methods
             string? input = null;
 
             while (true)
-            {                
+            {
                 try
                 {
                     Console.Write("Vnesite število, jaz pa bom izračunal njegov kvadrat: ");
@@ -164,11 +221,11 @@ namespace Methods
                     Console.WriteLine($"Kvadrat števila {inputInt} je {inputInt * inputInt}");
                     break;
                 }
-                catch (ArgumentNullException) 
+                catch (ArgumentNullException)
                 {
                     Console.WriteLine($"Vnos je prazen! Podajte število.");
                 }
-                catch (FormatException) 
+                catch (FormatException)
                 {
                     Console.WriteLine($"Vnos {input} ni v pravilni obliki!");
                 }
@@ -177,7 +234,8 @@ namespace Methods
                     Console.WriteLine($"Prišlo je do nepredvidene napake!\n" +
                         $"{ex.Message}");
                 }
-                finally // V stavku finally izvedemo ukaze, ki se naj izvedejo v vsakem primeru
+                // V stavku finally izvedemo ukaze, ki se naj izvedejo v vsakem primeru, ko pride do napake
+                finally
                 {
                     Console.WriteLine("Na tem mestu se metoda zaključi!\n");
                 }
@@ -259,7 +317,8 @@ namespace Methods
                 case 3:
                     return "/";
                 default:
-                    throw new Exception("Operacija s to vredostjo ni predvidena!");
+                    // Vržemo izjemo nazaj na pozicijo klica metode
+                    throw new Exception("GetOperator::Operacija s to vrednostjo ni predvidena!");
             }
         }
 
@@ -297,6 +356,48 @@ namespace Methods
                 case 3: return num1 / num2;
                 default: return 0;
             }
+        }
+
+        /// NALOGA 1:
+        /// Napišite metodo, ki uporabniku ponudi možnost 
+        /// vnosa artikla na nakupovalni seznam skupaj 
+        /// s številom kosov teh artiklov (npr. jogurt, 2).
+        /// Glede poziva uporabniku se lahko odločite sami
+        /// (npr. najprej ga pozovete, naj vnese naziv artikla, 
+        /// in nato še, naj vnese število kosov oziroma količino).
+        /// 
+        /// Uporabnik naj artikle vnaša, dokler se ne odloči, 
+        /// da je vnesel vse, in zaključi (tudi za to naj ima na voljo ukaz). [15 točk]
+        /// 
+        /// Na koncu izpišite vse artikle na seznamu uporabnika in skupno število kosov. [5 točk]
+        static void Izpit2023_Naloga1()
+        {
+            List<(string Naziv, int Kolicina)> lstNakupovalniSeznam = new List<(string, int)>();
+            string kodaZaIzhod = "K";
+            int skupnoSteviloKosov = 0;
+            while (true)
+            {
+                Console.Write($"Vnesite ime artikla (ali '{kodaZaIzhod}' za izhod iz programa): ");
+                string nazivArtikla = Console.ReadLine();
+                if (nazivArtikla.ToUpper() == kodaZaIzhod)
+                {
+                    break;
+                }
+
+                Console.Write("Vnesite še količino: ");
+                int kolicina = int.Parse(Console.ReadLine()); // Domača naloga - dopolniti s try-catch
+
+                skupnoSteviloKosov = skupnoSteviloKosov + kolicina;
+                lstNakupovalniSeznam.Add((nazivArtikla, kolicina));
+            }
+            Console.Write("Zapisovanje je končano. na seznamu imate naslednje artikle:\n");
+
+            // Izpišimo vse artikle
+            foreach (var artikel in lstNakupovalniSeznam)
+            {
+                Console.WriteLine($"Artikel: {artikel.Naziv}, količina: {artikel.Kolicina}");
+            }
+            Console.Write($"Skupno število kosov na seznamu je: {skupnoSteviloKosov}");
         }
     }
 }
