@@ -17,7 +17,7 @@ namespace FilesAndStrings
 
             // ***********************************************
             // Pisanje v datoteko
-            //WritingInFiles();
+            WritingInFiles();
 
 
 
@@ -26,10 +26,11 @@ namespace FilesAndStrings
             //ReadingFromFiles();
 
             // Primer branja iz datoteke
+            /*
             List<string> lstNews = ReadNews();
             foreach (string title in lstNews)
                 Console.WriteLine(title);
-
+            */
             Console.Read();
         }
 
@@ -45,7 +46,7 @@ namespace FilesAndStrings
             // Pridobimo trenutni čas in datum
             DateTime dtNow = DateTime.Now;
             // Zapišimo ga v datoteko skupaj s podatki o vremenu
-            swFile.WriteLine($"Zapis je bil ustvarjen: {dtNow.ToString("d. M. yyyy  HH:mm:ss")}");
+            swFile.WriteLine($"Zapis je bil ustvarjen: {dtNow:d. M. yyyy  HH:mm:ss}");
             swFile.WriteLine("-1");
             swFile.WriteLine("Sončno");
             swFile.WriteLine("Malo pa sneži.");
@@ -148,6 +149,9 @@ namespace FilesAndStrings
             char[] znaki = new char[] { ',', '\t' };
             // In zahtevajmo izločitev praznih polj
             string[] podatkiTab = abeceda.Split(znaki, StringSplitOptions.RemoveEmptyEntries);
+            
+            // Če želimo vklopiti več StringSplit možnosti, to storimo z operatorjem |
+            //string[] podatkiTab = abeceda.Split(znaki, StringSplitOptions.RemoveEmptyEntries|StringSplitOptions.TrimEntries);
 
             foreach (string podatek in podatkiTab)
             {

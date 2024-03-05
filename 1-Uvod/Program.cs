@@ -2,7 +2,7 @@
 // angleško "namespaces"
 namespace Introduction
 {
-    // Razredi so posebne strukture, o katerih več povemo v posebnem poglavju
+    // Razredi so posebne strukture, o katerih več povemo v 8. poglavju
     class Program
     {   
         // Program se vedno začne izvajati v metodi Main,
