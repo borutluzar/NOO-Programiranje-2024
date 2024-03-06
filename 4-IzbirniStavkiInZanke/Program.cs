@@ -173,10 +173,11 @@
             // Zanka while je najbolj preprosta.
             // Njena struktura je zelo podobna stavku if - najprej se preveri pogoj
             // in če je izpolnjen, se izvedejo še ukazi v jedru zanke.
+            Console.WriteLine("\nZanka WHILE\n");
             int i = 1;
             while (i < 4)
             {
-                Console.WriteLine($"i je enako {i}!");
+                Console.WriteLine($"{nameof(i)} je enako {i}!");
                 i += 1;
             }
 
@@ -184,6 +185,8 @@
             // Naslednji tip zanke je do while
             // Ta pogoj preveri šele, ko se ukazi v jedru izvedejo.
             // Zato se vedno izvedejo vsaj enkrat!
+
+            Console.WriteLine("\nZanka DO-WHILE\n");
             i = 4;
             do
             {
@@ -230,7 +233,7 @@
             // V vsaki vrstici bo $a$ znakov.Za njihov izris bo poskrbela posebna zanka, ki bo gnezdena v
             // zanki, katera bo skrbela za prehod v novo vrstico.
             // Primer rešene naloge je naslednji:
-            int a = 6;
+            int a = 10;
             for (i = 0; i < a; i++) // Zanka, ki ob vsakem prehodu ustvari vrstico 
             {
                 for (int j = 0; j < a; j++) // // Zanka, ki ob vsakem prehodu zapiše en znak
@@ -239,6 +242,27 @@
                     if (j == 0 || i == 0 || j == a - 1 || i == a - 1)
                     {
                         znakec = '*';
+                    }
+                    Console.Write(znakec); // Uporabimo ukaz Write, da ne skočimo v novo vrstico!
+                }
+                Console.WriteLine(); // Ko končamo zapis ene vrstice, gremo v novo
+            }
+
+
+            // ZGLED 2
+            // Za dano velikost šahovnice $a$ želimo na zaslon izrisati 
+            // šahovnico, kjer so bela polja označena z O, črna pa z X.
+            // Spodnje levo polje naj bo črno!
+            // Primer rešene naloge je naslednji:
+            a = 8;
+            for (i = 0; i < a; i++) // Zanka, ki ob vsakem prehodu ustvari vrstico 
+            {
+                for (int j = 0; j < a; j++) // // Zanka, ki ob vsakem prehodu zapiše en znak
+                {
+                    char znakec = a % 2 == 0 ? 'X' : 'O';
+                    if (i % 2 == 1 && j % 2 == 1 || i % 2 == 0 && j % 2 == 0)
+                    {
+                        znakec = a % 2 == 0 ? 'O' : 'X';
                     }
                     Console.Write(znakec); // Uporabimo ukaz Write, da ne skočimo v novo vrstico!
                 }
@@ -258,7 +282,7 @@
             // Odgovore uporabnika prebiramo z ukazom Console.ReadLine(), ki vrača vrednost tipa string.            
             while (true)
             {
-                Console.WriteLine("Kdo je najboljši nogometaš na svetu?");
+                Console.Write("Kdo je najboljši nogometaš na svetu? ");
                 string odgovor = Console.ReadLine();
                 if (odgovor == "Messi")
                 {
@@ -306,6 +330,29 @@
                 Console.WriteLine($"Število {ii} ni deljivo z 2, 3 ali 5.");
             }
             Console.WriteLine($"Število deljivih z 2, 3 ali 5 je {stDeljivihZVsajEnim}.");
+
+
+            // Zgled 3: Izpišimo prvih n členov Fibonacijevega zaporedja
+            // f[n+2] = f[n+1] + f[n]
+            // f[0] = 1, f[1] = 1
+            Console.WriteLine($"\nIzpis členov Fibonacijevega zaporedja:\n");
+            int n = 50;
+
+            long prva = 1;
+            Console.WriteLine($"1. člen: {prva}");
+            long druga = 1;
+            Console.WriteLine($"2. člen: {druga}");
+            long tekoca = druga + prva;
+            Console.WriteLine($"3. člen: {tekoca}");
+
+            for (i = 4; i <= n; i++)
+            {
+                // Ideja: f[4] = f[3] + f[2] (f[1] ne potrebujemo več...)
+                prva = druga;
+                druga = tekoca;
+                tekoca = druga + prva;
+                Console.WriteLine($"{i}. člen: {tekoca}");
+            }
 
             Console.Read();
         }
