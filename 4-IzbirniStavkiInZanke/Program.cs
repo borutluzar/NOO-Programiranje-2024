@@ -1,9 +1,4 @@
-﻿using System;
-using static System.Net.Mime.MediaTypeNames;
-using System.Runtime.ConstrainedExecution;
-using System.Reflection.Emit;
-
-namespace SelectStatementsAndLoops
+﻿namespace SelectStatementsAndLoops
 {
     internal class Program
     {
@@ -87,6 +82,18 @@ namespace SelectStatementsAndLoops
             Console.WriteLine($"{rezultat}");
 
 
+            // Zgled: zapišimo zgornjo kodo z običajnim stavkom IF
+            rezultat = "";
+            if (temperatura < 5)
+            {
+                rezultat = "Vreme je normalno";
+            }
+            else
+            {
+                rezultat = "Vreme je nenormalno";
+            }
+            Console.WriteLine($"Izpis: {rezultat}");
+
 
             // ***********************************************
             // Stavek switch
@@ -98,8 +105,9 @@ namespace SelectStatementsAndLoops
             int danVTednu = 2;
             switch (danVTednu)
             {
-                case 1:
+                case 1: // V primeru, da je vrednost danVTednu enaka 1
                     Console.WriteLine("Danes je ponedeljek!");
+                    Console.WriteLine("Garfield ga ne mara!");
                     break;
                 case 2:
                     Console.WriteLine("Danes je torek!");
@@ -114,7 +122,7 @@ namespace SelectStatementsAndLoops
 
 
             // Če se ob različnih vrednostih ukazi v jedru ponovijo, jih lahko združimo.
-            danVTednu = 3;
+            danVTednu = 8;
             switch (danVTednu)
             {
                 case 1:
@@ -237,7 +245,7 @@ namespace SelectStatementsAndLoops
                 Console.WriteLine(); // Ko končamo zapis ene vrstice, gremo v novo
             }
 
-            
+
 
             // ***********************************************
             // Stavka break in continue

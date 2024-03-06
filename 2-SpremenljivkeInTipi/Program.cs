@@ -21,7 +21,11 @@ namespace VariablesAndTypes
             // vrednosti sprejemajo cela števila:
             Console.WriteLine($"Izpis celoštevilskih spremenljivk: \n");
 
-            // Najbolj običajen (pogost) tip je int.            
+            // Najbolj običajen (pogost) tip je int.
+            int mojaSpremenljivka;
+            mojaSpremenljivka = 30;
+
+
             // Vrednost lahko zapišemo v desetiškem sistemu...
             int celoStevilo = 21;
             Console.WriteLine($"Izpis vrednosti spremenljivke celoStevilo v desetiškem sistemu: {celoStevilo}");
@@ -101,7 +105,8 @@ namespace VariablesAndTypes
             // Tip, ki sprejema besedila, je string
             Console.WriteLine($"\n\nIzpis spremenljivk z besedilom: \n");
 
-            string besedilo = "Danes je lep dan!"; // Vrednost moramo pisati v dvojnih narekovajih
+            string besedilo;
+            besedilo = "Danes je lep dan!"; // Vrednost moramo pisati v dvojnih narekovajih
             Console.WriteLine($"Izpis vrednosti spremenljivke tipa string: {besedilo}");
 
             // Uporabljamo lahko tudi posebne znake (ubežna zaporedja)

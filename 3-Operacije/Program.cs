@@ -47,7 +47,7 @@
             // Če želimo decimalno vrednost,
             // moramo to označiti že pri podajanju vrednosti,
             // npr. takole:
-            double realenKvocient = 3D / 4;
+            double realenKvocient = 3 / 4;
             Console.WriteLine($"Operator / na vsaj eni realni vrednosti vrne: 3 / 4 = {realenKvocient}");
 
             // Ko vrednost beremo iz spremenljivke,
@@ -60,7 +60,6 @@
             // zgolj na levi strani, saj operacija deljenja upošteva le svoje argumente:
             realenKvocient = 3 / 4;
             Console.WriteLine($"Rezultat 3 / 4 = {realenKvocient}, čeprav je na levi spremenljivka tipa double!");
-
 
             // Pri izvedbi več zaporednih operacij je najboljši način,
             // da vrstni red njihovega izvajanja določimo s pomočjo oklepajev
@@ -76,11 +75,17 @@
             Console.WriteLine($"Vrednost spremenljivke {nameof(izraz1)}: {izraz1}");
             Console.WriteLine($"Vrednost spremenljivke {nameof(izraz2)}: {izraz2}");
 
+            // Zgled: izračun indeksa telesne mase
+            double masa = 90.4;
+            double visina = 1.80;
+            double indeksTelesneMase = masa / (visina * visina);
+            Console.WriteLine($"Indeks naše telesne mase je {indeksTelesneMase:0.00}");
+
             // Operator + lahko uporabimo tudi nad neštevilskimi vrednostmi,
             // npr. nad nizi
             string beseda1 = "Danes";
             string beseda2 = "je lep dan";
-            string vsotaBesed = beseda1 + beseda2;
+            string vsotaBesed = beseda1 + " " + beseda2;
             Console.WriteLine($"Vsota dveh besed je združitev obeh v eno: {vsotaBesed}");
 
             // Določanje zaporedja operacij je še posebej pomembno pri kombiniranju s stringi:
@@ -128,7 +133,6 @@
             Console.WriteLine($"Obseg kroga s polmerom {polmer} je {obseg:0.00}.");
 
 
-
             // ***********************************************
             // Logične operacije
             Console.WriteLine($"\nLogične operacije:\n");
@@ -156,6 +160,8 @@
             Console.WriteLine($"Vrednost spremenljivke {nameof(seEnaNegacijaSneg)} je {seEnaNegacijaSneg}.");
 
 
+            bool seDrugPrimer = (sneg && !(sonce || sneg) || sonce && !sneg);
+            Console.WriteLine($"Vrednost spremenljivke {nameof(seDrugPrimer)} je {seDrugPrimer}.");
 
             // ***********************************************
             // Enakosti in primerjanja
@@ -171,7 +177,7 @@
             // Primerjamo lahko tudi nize
             // Dvojni enačaj uporabimo, ker je enojni že rezerviran za prirejanja
             string beseda = "Caramba!";
-            bool enakiBesedi = beseda == "caramba!"; // Rezultat: true
+            bool enakiBesedi = beseda == "Caramba!"; // Rezultat: true
             Console.WriteLine($"Vrednost spremenljivke {nameof(enakiBesedi)} je {enakiBesedi}.");
 
 
