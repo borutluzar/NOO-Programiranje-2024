@@ -1,9 +1,13 @@
-﻿namespace Playground
+﻿using Izpit_1_2023_04_08;
+
+namespace Playground
 {
     public class Program
     {
         static void Main(string[] args)
         {
+            Naloga3.ResitevNaloge();
+
             /*
             Console.WriteLine("\nTestiranje prekoračenja vrednosti tipa sbyte!");
 
@@ -15,6 +19,7 @@
             }
             */
 
+            /*
             Queue<int> vrsta = new Queue<int>();
             vrsta.Enqueue(5);
             vrsta.Enqueue(3);
@@ -22,13 +27,13 @@
             vrsta.Enqueue(2);
             vrsta.Enqueue(4);
 
-            int rezultat = AlgoritemIzpit2022(vrsta, 4, 3);
+            int rezultat = AlgoritmiIzpit2022(vrsta, 4, 3);
             Console.WriteLine($"{rezultat}");
-
+            */
             Console.Read();
         }
 
-        static int AlgoritemIzpit2022(Queue<int> vrsta, int a, int b)
+        static int AlgoritmiIzpit2022(Queue<int> vrsta, int a, int b)
         {
             bool vsebujeA = false;
             bool vsebujeB = false;
@@ -87,5 +92,6 @@
                 return minVVrsti;
             }
         }
+         
     }
 }

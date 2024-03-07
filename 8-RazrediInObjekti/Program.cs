@@ -12,19 +12,28 @@
             miza.numLegs = 4;
             miza.area = 2.5;
 
+            Table klop = new Table();
+            klop.material = "les/karbonska vlakna";
+            klop.numLegs = 4;
+            klop.area = 1.5;
+
+
             Dress obleka = new Dress("Versaci");
             //obleka.Designer = "Gucci";
 
 
             // Primer obdelave vremenskih podatkov z objekti
-            Weather vreme = new Weather(DateTime.Now);
+            WeatherMeasurement vreme = new WeatherMeasurement(DateTime.Now);
             //vreme.measurementTime = DateTime.Now;
             vreme.Temperature = 17;
             vreme.AirPressure = 1100;
             vreme.WindSpeed = 0.2;
 
+            // Klic objektne metode
+            //vreme.WriteProperties();
+
             // Ponovno nastavimo lastnost merjenja
-            vreme.MeasurementTime = DateTime.Now;
+            //vreme.MeasurementTime = DateTime.Now;
 
             Console.WriteLine($"Vreme danes ob {vreme.MeasurementTime:HH:mm:ss} je takšno, " +
                 $"da imamo:\n{vreme.Temperature} stopinj celzija, " +
@@ -39,8 +48,12 @@
             WriteMeasurements(fileName);
 
             // Pokličimo metodo za zbiranje podatkov iz datoteke
-            List<Weather> meritve = CollectMeasurements(fileName);
+            List<WeatherMeasurement> meritve = CollectMeasurements(fileName);
 
+            // Izračunajmo povprečno temperaturo
+            // naredimo statično metodo v razredu WeatherMeasurement
+            double avgTemperature = WeatherMeasurement.ComputeAverageTemperature(meritve);
+            Console.WriteLine($"Povprečna temperatura meritev je {avgTemperature}.");
 
             Console.Read();
         }
@@ -56,7 +69,7 @@
             Random rnd = new Random();
             sw.WriteLine(rnd.Next(-2, 12));
             sw.WriteLine(rnd.Next(800, 1200));
-            sw.WriteLine(rnd.Next(-2, 5));
+            sw.WriteLine(rnd.Next(2, 5));
 
             sw.Close();
         }
@@ -66,13 +79,13 @@
         /// in jih zapišemo v objekte za vsako meritev posebej.
         /// Na koncu vrnemo seznam vseh meritev.
         /// </summary>
-        static List<Weather> CollectMeasurements(string fileName)
+        static List<WeatherMeasurement> CollectMeasurements(string fileName)
         {
             StreamReader srFile = new StreamReader(fileName);
-            List<Weather> lstMeasurements = new List<Weather>();
+            List<WeatherMeasurement> lstMeasurements = new List<WeatherMeasurement>();
 
             int counter = 0;
-            Weather weatherMeasurement = new Weather();
+            WeatherMeasurement weatherMeasurement = new WeatherMeasurement();
             while (srFile.EndOfStream == false)
             {
                 string line = srFile.ReadLine();
@@ -93,7 +106,7 @@
                         weatherMeasurement.WindSpeed = double.Parse(line);
                         lstMeasurements.Add(weatherMeasurement);
                         // Ponastavimo vrednosti tekoče spremenljivke
-                        weatherMeasurement = new Weather();
+                        weatherMeasurement = new WeatherMeasurement();
                         break;
                 }
             }
@@ -157,13 +170,13 @@
     /// <summary>
     /// Razred za shranjevanje vremenskih podatkov za eno meritev
     /// </summary>
-    public class Weather
+    public class WeatherMeasurement
     {
         // Prazen konstruktor
-        public Weather() { }
+        public WeatherMeasurement() { }
 
         // Konstruktor z enim parametrom
-        public Weather(DateTime time)
+        public WeatherMeasurement(DateTime time)
         {
             measurementTime = time;
         }
@@ -195,6 +208,25 @@
                 $"da imamo:\n{this.Temperature} stopinj celzija, \n" +
                 $"{this.AirPressure} mbar zračnega tlaka in \n" +
                 $"hitrost vetra {this.WindSpeed} m/s");
+        }
+
+        /// <summary>
+        /// Izračuna povprečno temperaturo iz danega seznama objektov.
+        /// </summary>
+        public static double ComputeAverageTemperature(List<WeatherMeasurement> lstWeatherMsrmnts)
+        {    
+            // Način, ki ga poznamo
+            double sum = 0;
+            foreach (var wm in lstWeatherMsrmnts)
+            {
+                sum += wm.Temperature;
+            }
+            double avg = sum / lstWeatherMsrmnts.Count;
+
+            // Izračun s pomočjo lambda izrazov
+            // double avg = lstWeatherMsrmnts.Average(wm => wm.Temperature);
+
+            return avg;
         }
     }
 }
