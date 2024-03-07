@@ -11,13 +11,13 @@ namespace FilesAndStrings
             // Nizi
 
             // Delo z nizi bomo opisali v metodi StringManipulation.
-            //StringManipulation();
+            StringManipulation();
 
 
 
             // ***********************************************
             // Pisanje v datoteko
-            WritingInFiles();
+            //WritingInFiles();
 
 
 
@@ -101,6 +101,7 @@ namespace FilesAndStrings
 
             Console.WriteLine($"Povprečna temperatura je: {totalTemps / countTemps}");
 
+            // Datoteko, ki smo jo prebirali, še zapremo
             srFile.Close();
         }
 
