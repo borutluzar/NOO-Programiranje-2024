@@ -37,6 +37,13 @@ namespace ArraysAndLists
             {
                 Console.WriteLine(dan);
             }
+            // ali z zanko for
+            for (int d = 0; d < dnevi.Length; d++)
+            {
+                Console.WriteLine(dnevi[d]);
+            }
+            // ali z zanko while - doma!
+
 
 
             // ZGLED 1
@@ -79,6 +86,10 @@ namespace ArraysAndLists
             // Tabelo z dvema dimenzijama definiramo tako,
             // da pri tipu dodama dva para oglatih oklepajev
             int[][] tabela2D = new int[10][];
+            
+            // Podobno definiramo tabelo s 3 dimenzijami itd.
+            //int[][][] tabela3D = new int[10][][];
+            
 
             // Število polj povemo le za prvo dimenzijo.
             // Vsako polje v prvi dimenziji vsebuje enodimenzionalno
@@ -98,13 +109,14 @@ namespace ArraysAndLists
             Console.WriteLine("\n\n\n");
             // Oglejmo si primer izrisa mreže z danimi znaki na izbranih poljih
             // (spodnja koda med znakoma '#' in '.' izbira naključno).
-            int width = 20;
-            int height = 10;
+            int width = 8;
+            int height = 8;
             // Uporabimo objekt za slučajno generiranje števil
             Random rnd = new Random();
 
             // Definirajmo 2D-tabelo znakov
             char[][] mreza = new char[height][];
+            int countHash = 0;
             for (int i = 0; i < height; i++)
             {
                 // Najprej instanciramo tabelo 
@@ -115,11 +127,13 @@ namespace ArraysAndLists
                     // Slučajno izberemo celo število 
                     // med 0, 1 in 2
                     int type = rnd.Next(3);
+
                     // Glede na rezultat zapišemo vrednost
                     switch (type)
                     {
                         case 0:
                             mreza[i][j] = '#';
+                            countHash++;
                             break;
                         case >= 1:
                             mreza[i][j] = '.';
@@ -129,6 +143,8 @@ namespace ArraysAndLists
                 }
                 Console.WriteLine();
             }
+
+            Console.WriteLine($"Lojtr imamo {countHash}, pik pa {width * height - countHash}");
 
             // Dolžine tabel v posameznih poljih dobimo z lastnostjo Length
             Console.WriteLine(mreza.Length);
@@ -163,7 +179,9 @@ namespace ArraysAndLists
             List<int> seznamStevil = new List<int>(); // Pri inicializaciji ne določimo njegove velikosti
 
             // Podobno kot pri tabelah, lahko že ob inicializaciji naštejemo nekaj vrednosti
-            List<string> lstShopping = new List<string>() { "čokolada", "bonboni" };
+            List<string> lstShopping = new List<string>() { "čokolada", "bonboni", "pralni prašek" };
+
+            Console.WriteLine($"Število elementov v seznamu je {lstShopping.Count}");
 
             // Ali pa jih naknadno dodamo z ukazom Add
             lstShopping.Add("banane");
@@ -176,6 +194,8 @@ namespace ArraysAndLists
             lstShopping[0] = "ananas";
             lstShopping[3] = "avokado";
 
+            lstShopping.Insert(0, "čokolada");
+
             // Uporabimo lahko še ukaz RemoveAt, ki vrednost z določenega
             // indeksa izbriše
             lstShopping.RemoveAt(1);
@@ -184,13 +204,14 @@ namespace ArraysAndLists
             // to storimo z ukazom Remove
             lstShopping.Remove("avokado");
 
+
             foreach (string article in lstShopping)
             {
                 Console.WriteLine(article);
                 // POZOR - V zanki foreach ne moremo spreminjati tabele,
                 // po kateri iteriramo niti elementa, ki vsebuje iterativne vrednosti!
                 // Npr. ukaz:
-                //lstShopping.RemoveAt(0);
+                // lstShopping.RemoveAt(0);
                 // javi napako ob izvajanju!
             }
 
@@ -220,22 +241,24 @@ namespace ArraysAndLists
 
             // ZGLED
             // 	Oglejmo si primer dodajanja sodih števil v seznam, pri čemer jih izbiramo
-            // 	med 100 naključno izbranimi števili, kar pomeni, da v naprej ne poznamo
+            // 	med  n  naključno izbranimi števili, kar pomeni, da v naprej ne poznamo
             // 	števila polj seznama.
             rnd = new Random();
-            List<int> seznamSodih = new List<int>();
-            for (int i = 0; i < 100; i++)
+            int n = 100_000;
+
+            List<int> lstSeznamSodih = new List<int>();
+            for(int i = 0; i < n; i++)
             {
-                int rndChosen = rnd.Next(1001);
-                if (rndChosen % 2 == 0)
+                int val = rnd.Next(n);
+                if(val % 2 == 0)
                 {
-                    seznamSodih.Add(rndChosen);
+                    lstSeznamSodih.Add(val);
                 }
             }
 
             // Še izpišemo rezultat algoritma
             Console.WriteLine($"Med izbranimi števili je "
-                + $"{seznamSodih.Count} sodih.");
+                + $"{lstSeznamSodih.Count} sodih.");
 
 
             Console.Read();
