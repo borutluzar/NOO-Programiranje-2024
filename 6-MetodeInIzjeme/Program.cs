@@ -23,6 +23,10 @@ namespace Methods
             double result = Kvocient(a, b);
             Console.WriteLine($"Rezultat metode {nameof(Kvocient)} za parametra {a} in {b} je {result:0.0000}");
 
+            double aa = 9.0;
+            double result2 = Kvocient(aa, b);
+
+
             // Pokličemo metodo SumThree
             int sum = SumThree(1, 10, 100);
             Console.WriteLine($"Naš rezultat je {sum}");
@@ -41,6 +45,14 @@ namespace Methods
             double quotient = Quotient(12, 13);
             Console.WriteLine($"Rezultat deljenja je {quotient:0.000}");
             */
+
+
+            // Zgled: Metoda, ki dobi podatke o študentih,
+            // ki so pisali izpit in njihovo število točk,
+            // izračuna pa povprečno oceno vseh.
+            double rezultat = PovprecnaOcena();
+            Console.WriteLine($"Povprečna ocena izpita je bila {rezultat:0.00}");
+
 
             // Zgled - Naloga 1 iz drugega izpita 2023
             Izpit2023_Naloga1();
@@ -94,6 +106,58 @@ namespace Methods
             Console.Read();
         }
 
+        static double PovprecnaOcena()
+        {
+            // Definiramo seznam, ki mu za tip podatkov podamo (urejen) par tipov
+            // Paru tipov lahko celo damo imena!
+            /* Primer:
+             * Borut 68
+             * Boris 73
+             * Bine 98
+             * Boštjan 87
+             */
+            List<(string Ime, int Tocke)> lstPodatki = new List<(string, int)>();
+
+            while (true)
+            {
+                Console.Write("Vpišite ime študenta (ali 0 za izhod): ");
+                string ime = Console.ReadLine();
+                if (ime == "0")
+                {
+                    Console.Write("\nPrenehali ste z vpisovanjem!\n");
+                    break;
+                }
+                Console.Write("Vpišite število točk: ");
+                int tocke = int.Parse(Console.ReadLine());
+                lstPodatki.Add((ime, tocke));
+            }
+
+            double vsota = 0;
+            // Ker vemo, za akšen tip podatka gre, lahko uporabimo var
+            foreach (var par in lstPodatki)
+            {
+                vsota += par.Tocke;
+            }
+
+            // Izpišimo frekvenco posameznih ocen
+            int[] tblFrekvenca = new int[6];
+            foreach (var par in lstPodatki)
+            {
+                int ocena = (int)Math.Max(Math.Ceiling(par.Tocke / 10D), 5);
+                tblFrekvenca[ocena - 5]++;
+            }
+            for (int i = 0; i < tblFrekvenca.Length; i++)
+            {
+                Console.WriteLine($"Število ocen {i + 5} je {tblFrekvenca[i]}");
+            }
+
+            // Izračunajmo povprečno oceno
+            double povprecnaOcena = (vsota / lstPodatki.Count) / 10;
+
+            return povprecnaOcena;
+        }
+
+
         /// <summary>
         /// Izračuna indeks telesne mase.
         /// </summary>
@@ -115,6 +179,21 @@ namespace Methods
         static double Kvocient(int a, int b)
         {
             double result = (double)a / b;
+
+            // Stavek return pove, katero vrednost vračamo
+            return result;
+        }
+
+        /// <summary>
+        /// Moja nova metoda s super opisom...
+        /// </summary>
+        /// <param name="a">Moj parameter a</param>
+        /// <param name="b">Njen parameter b</param>
+        /// <returns>Kvocient a in b</returns>
+        static double Kvocient(double a, int b)
+        {
+            double result = a / b;
+
             // Stavek return pove, katero vrednost vračamo
             return result;
         }
