@@ -58,6 +58,8 @@ namespace Methods
             Izpit2023_Naloga1();
 
 
+
+
             // Izjeme
 
             // Pokličimo metodo GetOperator (vpeljava stavkov throw in try-catch)

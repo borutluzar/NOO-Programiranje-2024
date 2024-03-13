@@ -88,7 +88,7 @@ namespace Izpit_1_2023_04_08
                     i = (int)value;
             }
             Console.WriteLine("\n--\t--\t--\t--");
-            Console.Write($"Choose {typeof(T).Name} to run: ");
+            Console.Write($"Izberi {typeof(T).Name} za izvedbo: ");
 
             string input = Console.ReadLine();
             bool isFormatCorrect = int.TryParse(input, out int chosen);
@@ -104,7 +104,7 @@ namespace Izpit_1_2023_04_08
             }
 
             Console.Write("\n");
-            Console.WriteLine($"Running {typeof(T).Name} {(T)(object)chosen}...");
+            Console.WriteLine($"Izvajam {typeof(T).Name} {(T)(object)chosen}...");
             Console.Write("\n\n");
 
             // Pretvorba (cast) iz int nazaj v enumeracijo ni možna 

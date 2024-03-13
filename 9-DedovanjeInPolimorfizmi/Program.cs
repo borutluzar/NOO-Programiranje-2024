@@ -1,4 +1,5 @@
 ﻿using ShoppingCartExample;
+using System.Net;
 using System.Numerics;
 
 namespace DedovanjeInPolimorfizmi
@@ -7,29 +8,70 @@ namespace DedovanjeInPolimorfizmi
     {
         static void Main(string[] args)
         {
+            // Naredimo instanco razreda Object
+            // Vsi razredi v C# dedujejo od razreda Object
+            Object obj = new Object();
+            obj.ToString();
+
+            
+            // Naredimo instanci razredov Bicycle in EBike
+            Bicycle kolo = new Bicycle(); // Bicycle deduje od Object
+            kolo.FrameSize = 21;
+            Console.WriteLine($"Opis kolesa {nameof(kolo)}: {kolo.ToString()}");
+
+            Bicycle kolo2 = new Bicycle();
+            kolo2.FrameSize = 17;
+            Console.WriteLine($"Opis kolesa {nameof(kolo2)}: {kolo2.ToString()}");
+
+            EBike eKolo = new EBike(); // EBike deduje od Bicycle
+            eKolo.FrameSize = 18;
+            eKolo.BateryTime = 4;
+            eKolo.ChangeGear(3);
+            Console.WriteLine($"Opis kolesa {nameof(eKolo)}: {eKolo.ToString()}");
+
+            MountainBike gorsko = new MountainBike(15); // EBike deduje od Bicycle
+
+
+            // Konstruktorji podrazredov
+            Coffee kava = new Coffee(3);
+            Turkish turska = new Turkish(0, 5);
+
+
+            // Polimorfizmi
+            Circle krog1 = new Circle(1, 3.4);
+            Circle krog2 = new Circle(2, 1);
+            Circle krog3 = new Circle(3, 2);
+
+            Rectangle pravokotnik1 = new Rectangle(4, 2, 6);
+            Rectangle pravokotnik2 = new Rectangle(5, 3, 5.7);
+
+            // Domača naloga: dopolnite strukturo razredov še s tremi podrazredi
+            // (kvadrat, trikotnik, šestkotnik)
+
             List<Shape> lstShapes = new List<Shape>()
             {
-                new Circle(1, 3.4),
-                new Circle(2, 1),
-                new Circle(3, 2),
-                new Rectangle(4, 2, 6),
-                new Rectangle(5, 3, 5.7)
+                krog1,
+                krog2,
+                krog3,
+                pravokotnik1,
+                pravokotnik2
             };
 
             foreach (Shape shp in lstShapes)
             {
-                Console.WriteLine($"Obseg lika {shp.ID} je {shp.Perimeter()}");
+                Console.WriteLine($"Obseg lika {shp.ID} je {shp.Perimeter():0.00}");
 
                 // Če želimo preveriti, ali imamo opravka s posebnim tipom,
                 // to preverimo z rezervirano besedo is
                 if (shp is Circle)
                 {
                     double area = ((Circle)shp).Area();
+                    Console.WriteLine($"Ploščina lika {shp.ID} je {area:0.00}");
                 }
-
             }
 
 
+            // Zgled:
             // Primer ShoppingCart           
 
             ShoppingCart myCart = new ShoppingCart();
@@ -62,12 +104,17 @@ namespace DedovanjeInPolimorfizmi
 
         public int CurrentGear { get; set; }
 
+        /// <summary>
+        /// Metodo ToString dedujemo iz razreda Object
+        /// </summary>        
         public override string ToString()
         {
-            return $"Velikost okvirja: {FrameSize}\n" +
-                    $"Število prestav: {NumGears}\n" +
-                    $"Znamka: {Brand}";
-        }
+            string rezultat = $"Velikost okvirja: {this.FrameSize}\n" +
+                    $"Število prestav: {this.NumGears}\n" +
+                    $"Znamka: {this.Brand}";
+
+            return rezultat;
+        }        
 
         public virtual void ChangeGear(int increaseBy)
         {
@@ -83,17 +130,35 @@ namespace DedovanjeInPolimorfizmi
         public override string ToString()
         {
             // Z rezervirano besedo base povemo, da se sklicujemo na nadrazred.
-            return base.ToString() +
+            string rezultat = base.ToString() + "\n" +
                     $"Čas vzdržljivosti baterije: {BateryTime}";
+
+            return rezultat;
         }
 
         // Rahlo popravimo metodo iz nadrazreda
         public override void ChangeGear(int increaseBy)
         {
-            this.CurrentGear += increaseBy;
-            Console.WriteLine("Zvišanje prestave lahko zmanjša vzdržljivost baterije!");
+            //this.CurrentGear += increaseBy;
+            // ali
+            base.ChangeGear(increaseBy);
+            
+            if(increaseBy > 0)
+                Console.WriteLine("Zvišanje prestave lahko zmanjša vzdržljivost baterije!");
         }
     }
+
+    public class MountainBike : Bicycle
+    {
+        public double TireWidth { get; set; }
+
+        public MountainBike(double tireWidth)
+        {
+            TireWidth = tireWidth;
+        }
+    }
+
+
 
     public class Coffee
     {
@@ -104,6 +169,7 @@ namespace DedovanjeInPolimorfizmi
 
         public double Quantity { get; set; }
     }
+
 
     // Nadrazred označimo za dvopičjem
     public class Turkish : Coffee
