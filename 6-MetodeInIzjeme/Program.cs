@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace Methods
 {
@@ -99,9 +100,12 @@ namespace Methods
                 Console.WriteLine($"Prišlo je do neke popolnoma druge napake:\n{ex.Message}");
             }
 
+
             // In še klic metode GetPatientsHeight
+            /*
             int patientsHeight = GetPatientsHeight();
             Console.WriteLine($"Višina pacienta je {patientsHeight}");
+            */
 
             //Console.Read();
 
@@ -110,7 +114,7 @@ namespace Methods
             //WriteGCDForPairs(15);
 
             // Pokličimo še metodo, ki lovi izjeme
-            CatchException();
+            //CatchException();
 
             // Še ena funkcija z nekaj več opravili
             ComputingQuestions();
@@ -210,17 +214,34 @@ namespace Methods
             return result;
         }
 
+        public enum MetricType
+        {
+            Meters = 0,
+            Feet = 1
+        }
+
+        
+        static MetricType metricType = 0;
+
         static int GetPatientsHeight()
         {
             int height = 0;
             while (height == 0)
             {
-                Console.Write($"Vpišite svojo višino: ");
+                Console.Write($"Vpišite svojo višino (v centimetrih): ");
                 string answer = Console.ReadLine();
+                if (answer.Length == 0)
+                    answer = null;
 
                 try
                 {
                     height = int.Parse(answer);
+
+                    // Validirajmo vnos
+                    int lower = 45; // V idealnem primeru vrednost preberemo iz konfiguracijske datoteke
+                    int upper = 300;
+                    ValidateHeight(height, lower, upper, metricType);
+
                 }
                 catch (FormatException)
                 {
@@ -232,6 +253,16 @@ namespace Methods
                     Console.WriteLine($"Prišlo je do napake, " +
                         $"zaradi vnosa števila, ki je preveliko ali premajhno za int!");
                 }
+                catch (ArgumentNullException)
+                {
+                    Console.WriteLine($"Prišlo je do napake, " +
+                        $"vhodni podatek je NULL!");
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine($"Prišlo je do napake, " +
+                        $"podana višina v centimetrih je izven dovoljenih okvirjev!");
+                }
                 catch (Exception ex)
                 {
                     //Console.WriteLine($"Prišlo je do napake:\n{ex.Message}");
@@ -241,6 +272,27 @@ namespace Methods
 
             return height;
         }
+
+        private static bool ValidateHeight(int height, int lowerBound, int upperBound, MetricType metType)
+        {
+            if (metType == MetricType.Meters)
+            {
+                if (height < lowerBound || height > upperBound)
+                {
+                    throw new ArgumentOutOfRangeException($"{nameof(height)}", "Višina je izven predvidenih okvirjev!");
+                }
+                return true;
+            }
+            else if(metType == MetricType.Feet)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
         /// <summary>
         /// Sešteje tri podana števila.
@@ -329,7 +381,7 @@ namespace Methods
                 finally
                 {
                     Console.WriteLine("Na tem mestu se metoda zaključi!\n");
-                }
+                }                
             }
         }
 
