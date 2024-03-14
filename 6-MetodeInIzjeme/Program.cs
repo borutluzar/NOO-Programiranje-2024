@@ -50,22 +50,32 @@ namespace Methods
             // Zgled: Metoda, ki dobi podatke o študentih,
             // ki so pisali izpit in njihovo število točk,
             // izračuna pa povprečno oceno vseh.
+            /*
             double rezultat = PovprecnaOcena();
             Console.WriteLine($"Povprečna ocena izpita je bila {rezultat:0.00}");
-
+            */
 
             // Zgled - Naloga 1 iz drugega izpita 2023
+            /*
             Izpit2023_Naloga1();
+            */
 
-
+            // Primer klica metode iz novega (razred MojeMetode) razreda
+            Methods.MySuperApplicableMethods.MojeMetode.MojaMetoda();
 
 
             // Izjeme
+            /*
+            Console.Write($"Vpišite vaše število: ");            
+            int mojeStevilo = int.Parse(Console.ReadLine());
+            */
+
+            //string oprt2 = GetOperator(5);
 
             // Pokličimo metodo GetOperator (vpeljava stavkov throw in try-catch)
             try
             {
-                string oprt = GetOperator(2);
+                string oprt = GetOperator(5);
                 Console.WriteLine($"Operator je {oprt}");
             }
             catch (Exception ex)

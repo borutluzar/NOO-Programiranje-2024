@@ -38,12 +38,12 @@ namespace Izpit_1_2023_04_08
                     break;
                 case Naloge.Naloga2:
                     {
-                        //Naloga2.ResitevNaloge();
+                        Naloga2.ResitevNaloge();
                     }
                     break;
                 case Naloge.Naloga3:
                     {
-                        //Naloga3.ResitevNaloge();
+                        Naloga3.ResitevNaloge();
                     }
                     break;
                 case Naloge.Naloga4:
