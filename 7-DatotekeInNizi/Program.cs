@@ -142,15 +142,18 @@ namespace FilesAndStrings
             // lahko morebitna prazna polja (npr. dve zaporedni vejici brez znaka vmes še vedno
             // pomenita polje, vendar z vrednostjo "praznega" niza) izločimo
             // z uporabo lastnosti StringSplitOptions.RemoveEmptyEntries
-            string abeceda = "  alfa,beta\tgama\tdelta,kappa,,,omega   ";
+            string abeceda = "  alfa,beta\t gama \tdelta,kappa,,,omega  \t ";
+            var testSplit = abeceda.Split(',', '\t');
+            Console.WriteLine($"Izpis pred Trim(): [{abeceda}]");
             abeceda = abeceda.Trim();
-            Console.WriteLine(abeceda);
+            Console.WriteLine($"Izpis po Trim(): [{abeceda}]");
+
 
             // Določimo množico ločil
             char[] znaki = new char[] { ',', '\t' };
             // In zahtevajmo izločitev praznih polj
-            string[] podatkiTab = abeceda.Split(znaki, StringSplitOptions.RemoveEmptyEntries);
-            
+            string[] podatkiTab = abeceda.Split(znaki, StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+
             // Če želimo vklopiti več StringSplit možnosti, to storimo z operatorjem |
             //string[] podatkiTab = abeceda.Split(znaki, StringSplitOptions.RemoveEmptyEntries|StringSplitOptions.TrimEntries);
 
@@ -159,10 +162,18 @@ namespace FilesAndStrings
                 Console.WriteLine(podatek);
             }
 
-            string messi = "Messi";
+            // V podatkih lahko tudi zamenjamo znake (ali pa kar cele dele besedila)
+            abeceda = abeceda
+                .Replace("\t", ",")
+                .Replace(" ", "")
+                .Replace(",,", "");
+            Console.WriteLine($"Izpis po Replace(): [{abeceda}]");
+
+            string messi = "Messi1234";
             Console.WriteLine(messi.ToLower()); // Pretvorimo v male črke
             Console.WriteLine(messi.ToUpper()); // Pretvorimo v velike črke
 
+            
             // Funkcija Substring
             string emso = "0101023500001";
             //Console.WriteLine(emso.Substring(4, 3));            
@@ -234,7 +245,7 @@ namespace FilesAndStrings
 
                 lstNews.Add(newsTitle);
             }
-            
+
             return lstNews;
         }
     }
