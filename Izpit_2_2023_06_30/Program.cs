@@ -7,7 +7,7 @@ namespace Izpit_2_2023_06_30
     /// Vaše rešitve zapisujte v datoteke z imeni Naloga[X],
     /// kjer je X številka naloge.
     /// 
-    /// Pri reševanju si lahko pomagate s kodo, ki je na voljo tej rešitvi,
+    /// Pri reševanju si lahko pomagate s kodo, ki je na voljo v tej rešitvi,
     /// kodo s predavanj in vaj
     /// ter tudi z uradno dokumentacijo o C# in .Net 
     /// (torej z vsemi viri na domeni learn.microsoft.com).

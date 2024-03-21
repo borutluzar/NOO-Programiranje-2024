@@ -11,7 +11,7 @@ namespace FilesAndStrings
             // Nizi
 
             // Delo z nizi bomo opisali v metodi StringManipulation.
-            StringManipulation();
+            //StringManipulation();
 
 
 
@@ -26,11 +26,10 @@ namespace FilesAndStrings
             //ReadingFromFiles();
 
             // Primer branja iz datoteke
-            /*
             List<string> lstNews = ReadNews();
             foreach (string title in lstNews)
                 Console.WriteLine(title);
-            */
+
             Console.Read();
         }
 
@@ -41,15 +40,18 @@ namespace FilesAndStrings
         static void WritingInFiles()
         {
             // Z datoteko se povežemo s pomočjo razreda StreamWriter
-            StreamWriter swFile = new StreamWriter("Borut.txt", true);
+            StreamWriter swFile = new StreamWriter("PRA-UvP.blaz", true); // Relativna pot do datoteke
 
             // Pridobimo trenutni čas in datum
             DateTime dtNow = DateTime.Now;
+
             // Zapišimo ga v datoteko skupaj s podatki o vremenu
-            swFile.WriteLine($"Zapis je bil ustvarjen: {dtNow:d. M. yyyy  HH:mm:ss}");
+            swFile.WriteLine($"Zapis je bil ustvarjen: {dtNow:d. M. yyyy HH:mm:ss}");
             swFile.WriteLine("-1");
             swFile.WriteLine("Sončno");
             swFile.WriteLine("Malo pa sneži.");
+
+            // swFile.Flush(); // Funkcija, ki omogoča sprotni zapis v datoteko (že preden jo zapremo)
 
             // Zaprimo datoteko
             swFile.Close();
@@ -78,7 +80,7 @@ namespace FilesAndStrings
         /// </summary>
         static void ReadingFromFiles()
         {
-            string fileName = "Borut.txt";
+            string fileName = "PRA-UvP.txt";
             StreamReader srFile = new StreamReader(fileName);
 
             Console.WriteLine($"Beremo iz datoteke {fileName}\n");
@@ -173,19 +175,30 @@ namespace FilesAndStrings
             Console.WriteLine(messi.ToLower()); // Pretvorimo v male črke
             Console.WriteLine(messi.ToUpper()); // Pretvorimo v velike črke
 
+            // "Borut, Miha, Jože se učijo", 23, Tone, Srečno pot!, "Gremo na morje"
             
             // Funkcija Substring
             string emso = "0101023500001";
-            //Console.WriteLine(emso.Substring(4, 3));            
+            string letnica = emso.Substring(4, 3); // 023
+            string prviZnak = letnica[0].ToString();
+            Console.WriteLine(emso.Substring(4, 3));
+            
+
             int letoRojstva = int.Parse(emso.Substring(4, 3));
 
             // Nize lahko obravnavamo kot tabele znakov.
             // Po nizu se tako lahko sprehodimo z zanko foreach
             // in pregledamo vse njegove znake.
+            int stevilo0 = 0;
             foreach (char znak in emso)
             {
                 Console.WriteLine(znak);
+                if(znak == '0')
+                {
+                    stevilo0 += 1;
+                }
             }
+            Console.WriteLine($"Število 0 v nizu {nameof(emso)} je {stevilo0}");
 
             if (emso[4] == '0')
             {
@@ -201,7 +214,10 @@ namespace FilesAndStrings
             string kompliciranNiz = "aksfbweijnač,xpwqmxBLsnanč";
             char zadnjiZnak1 = kompliciranNiz[kompliciranNiz.Length - 1];
             string zadnjiZnak2 = kompliciranNiz.Substring(kompliciranNiz.Length - 1, 1);
-            kompliciranNiz.IndexOf("wei");
+            
+            // Iskanje indeksa pojavitve dane besede
+            int indexWei = kompliciranNiz.IndexOf("wei");
+            Console.WriteLine($"wei se pojavi na indeksu {indexWei}");
         }
 
         public static List<string> ReadNews()
