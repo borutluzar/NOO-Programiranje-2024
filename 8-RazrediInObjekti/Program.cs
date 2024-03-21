@@ -4,8 +4,6 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, world!");
-
             // Naredimo instanco razreda Table
             Table miza = new Table();
             miza.material = "les";
@@ -17,9 +15,20 @@
             klop.numLegs = 4;
             klop.area = 1.5;
 
+            // Določimo še vrednost statične spremenljivke,
+            // ki je enaka za izdelavo vsake mize
+            Table.hourlyRate = 50.0;
+
 
             Dress obleka = new Dress("Versaci");
-            //obleka.Designer = "Gucci";
+            Dress oblekaZaVSluzbo = new Dress("Versaci");
+            Dress oblekaZaNaRekreacijo = new Dress("Mura");
+            Dress oblekaZaPosebnePriložnosti = new Dress();
+
+            // Pridobivanje vrednosti - get
+            Console.WriteLine($"Designer obleke je {obleka.Designer}");
+            // Nastavljanje vrednosti - set
+            obleka.Designer = "Gucci";
 
 
             // Primer obdelave vremenskih podatkov z objekti
@@ -29,23 +38,31 @@
             vreme.AirPressure = 1100;
             vreme.WindSpeed = 0.2;
 
+            WeatherMeasurement vremeJutri = new WeatherMeasurement(DateTime.Now.AddDays(1));
+            //vreme.measurementTime = DateTime.Now;
+            vremeJutri.Temperature = 23;
+            vremeJutri.AirPressure = 1200;
+            vremeJutri.WindSpeed = 1.2;
+
             // Klic objektne metode
-            //vreme.WriteProperties();
+            vreme.WriteProperties();
+            vremeJutri.WriteProperties();
 
             // Ponovno nastavimo lastnost merjenja
-            //vreme.MeasurementTime = DateTime.Now;
-
+            vreme.MeasurementTime = DateTime.Now;
+                        
             Console.WriteLine($"Vreme danes ob {vreme.MeasurementTime:HH:mm:ss} je takšno, " +
                 $"da imamo:\n{vreme.Temperature} stopinj celzija, " +
                 $"\n{vreme.AirPressure} mbar zračnega tlaka in " +
                 $"\nhitrost vetra {vreme.WindSpeed} m/s");
 
-            string fileName = "msrmnts.txt";
-            WriteMeasurements(fileName);
-            WriteMeasurements(fileName);
-            WriteMeasurements(fileName);
-            WriteMeasurements(fileName);
-            WriteMeasurements(fileName);
+
+            string fileName = "msrmnts.mes";
+
+            for (int i = 0; i < 10; i++)
+            {
+                WriteMeasurements(fileName);
+            }
 
             // Pokličimo metodo za zbiranje podatkov iz datoteke
             List<WeatherMeasurement> meritve = CollectMeasurements(fileName);
@@ -69,7 +86,7 @@
             Random rnd = new Random();
             sw.WriteLine(rnd.Next(-2, 12));
             sw.WriteLine(rnd.Next(800, 1200));
-            sw.WriteLine(rnd.Next(2, 5));
+            sw.WriteLine(rnd.Next(0, 7));
 
             sw.Close();
         }
@@ -128,6 +145,8 @@
         public string material = "";
         public int numLegs;
         public double area;
+
+        public static double hourlyRate; 
     }
 
     public class Book
@@ -149,6 +168,11 @@
             Designer = designedBy;
         }
 
+        public Dress()
+        {
+            Designer = "Gucci";
+        }
+
         // Inicializacija spremenljivke,
         // ki nosi vrednost za lastnost
         private string designer = string.Empty;
@@ -160,7 +184,7 @@
             {
                 return designer;
             }
-            private set
+            set
             {
                 designer = value;
             }
@@ -202,6 +226,9 @@
         public double AirPressure { get; set; }
         public double WindSpeed { get; set; }
 
+        /// <summary>
+        /// Prva definicija objektne naše metode
+        /// </summary>
         public void WriteProperties()
         {
             Console.WriteLine($"Vreme danes ob {this.MeasurementTime:HH:mm:ss} je takšno, " +
