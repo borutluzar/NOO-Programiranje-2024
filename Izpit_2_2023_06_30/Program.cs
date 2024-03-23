@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Izpit_2_2023_06_30
+namespace Izpit_2023_06_30
 {
     /// <summary>
     /// V tem razredu ne spreminjajte ničesar!

@@ -1,4 +1,7 @@
-﻿namespace Izpit_2_2023_06_30
+﻿using System.Security.Cryptography;
+using System.Text;
+
+namespace Izpit_2023_06_30
 {
     /// <summary>
     /// NALOGA 2:
@@ -26,7 +29,7 @@
     /// ki ste ga definirali sami.
     /// Na koncu instanco kuhinje tudi izpišite.                                [5 točk]
     /// </summary>
-
+    
 
     public class Naloga2
     {

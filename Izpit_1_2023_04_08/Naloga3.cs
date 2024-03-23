@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace Izpit_1_2023_04_08
+namespace Izpit_2023_04_08
 {
     /// <summary>
     /// NALOGA 3:

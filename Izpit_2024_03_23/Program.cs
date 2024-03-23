@@ -1,21 +1,25 @@
-﻿using System.Security.Cryptography;
-using System.Text;
+﻿using System.Text;
 
-namespace Izpit_2023_04_08
+namespace Izpit_2024_03_23
 {
     /// <summary>
+    /// 1. izpit iz predmeta Osnove programiranja, program DISIA - NOO, 23. marec 2024
+    /// 
     /// V tem razredu ne spreminjajte ničesar!
     /// Vaše rešitve zapisujte v datoteke z imeni NalogaX,
-    /// kjer je X številka naloge.
+    /// kjer je X številka naloge (datoteke so v tem projektu že pripravljene).
     /// 
-    /// Pri reševanju si lahko pomagate s kodo, ki je na voljo tej rešitvi,
+    /// Pri reševanju si lahko pomagate s kodo s predavanj,
     /// ter tudi z uradno dokumentacijo o C# in .Net 
     /// (torej z vsemi viri na domeni learn.microsoft.com).
     /// 
     /// NE SMETE uporabljati drugih virov.
     /// 
-    /// Ko končate, datoteke s kodo (torej štiri datoteke z imenom Naloga[X].cs) pošljite na 
-    /// elektronski naslov borut.luzar@fis.unm.si
+    /// Ko končate, datoteke s kodo (torej štiri datoteke z imenom Naloga[X].cs) 
+    /// zapakirajte v zip datoteko in jo naložite na 
+    /// spletno stran https://luzar.fis.unm.si/ExamsUpload/
+    /// 
+    /// Čas pisanja: 90 minut
     /// </summary>
     public class Program
     {
@@ -88,7 +92,7 @@ namespace Izpit_2023_04_08
                     i = (int)value;
             }
             Console.WriteLine("\n--\t--\t--\t--");
-            Console.Write($"Izberi {typeof(T).Name} za izvedbo: ");
+            Console.Write($"Choose {typeof(T).Name} to run: ");
 
             string input = Console.ReadLine();
             bool isFormatCorrect = int.TryParse(input, out int chosen);
@@ -104,7 +108,7 @@ namespace Izpit_2023_04_08
             }
 
             Console.Write("\n");
-            Console.WriteLine($"Izvajam {typeof(T).Name} {(T)(object)chosen}...");
+            Console.WriteLine($"Running {typeof(T).Name} {(T)(object)chosen}...");
             Console.Write("\n\n");
 
             // Pretvorba (cast) iz int nazaj v enumeracijo ni možna 

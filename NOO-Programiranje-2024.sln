@@ -27,9 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "99_PrimerIzpita", "99-Prime
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "99_PrimerIzpitaResitev", "99-PrimerIzpitaResitev\99_PrimerIzpitaResitev.csproj", "{F957D825-7913-4435-A47E-6F3385AD7EFE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Izpit_1_2023_04_08", "Izpit_1_2023_04_08\Izpit_1_2023_04_08.csproj", "{7287B0AA-E817-4320-80CF-9A2B09FD1D68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Izpit_2023_04_08", "Izpit_1_2023_04_08\Izpit_2023_04_08.csproj", "{7287B0AA-E817-4320-80CF-9A2B09FD1D68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Izpit_2_2023_06_30", "Izpit_2_2023_06_30\Izpit_2_2023_06_30.csproj", "{0CEEF2D9-BFD1-46A2-8A63-35C79D8DA413}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Izpit_2023_06_30", "Izpit_2_2023_06_30\Izpit_2023_06_30.csproj", "{0CEEF2D9-BFD1-46A2-8A63-35C79D8DA413}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Izpit_2024_03_23", "Izpit_2024_03_23\Izpit_2024_03_23.csproj", "{5FB6DFF9-467E-4121-AA8D-1F3389FFEF0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{0CEEF2D9-BFD1-46A2-8A63-35C79D8DA413}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CEEF2D9-BFD1-46A2-8A63-35C79D8DA413}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CEEF2D9-BFD1-46A2-8A63-35C79D8DA413}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FB6DFF9-467E-4121-AA8D-1F3389FFEF0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FB6DFF9-467E-4121-AA8D-1F3389FFEF0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FB6DFF9-467E-4121-AA8D-1F3389FFEF0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FB6DFF9-467E-4121-AA8D-1F3389FFEF0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

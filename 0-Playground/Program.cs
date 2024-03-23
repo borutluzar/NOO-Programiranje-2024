@@ -1,4 +1,4 @@
-﻿using Izpit_1_2023_04_08;
+﻿using Izpit_2023_04_08;
 
 namespace Playground
 {

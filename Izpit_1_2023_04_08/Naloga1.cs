@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace Izpit_1_2023_04_08
+namespace Izpit_2023_04_08
 {
     /// <summary>
     /// NALOGA 1:
@@ -13,7 +13,7 @@ namespace Izpit_1_2023_04_08
     /// Igro nato nadaljuje drug uporabnik (igralec).
     /// Igralcu se izpiše prva črka izbrane besede, 
     /// igralec pa poskuša uganiti besedo.
-    /// Za vsako vnešeno besedo mu metoda izpiše, egg3
+    /// Za vsako vnešeno besedo mu metoda izpiše, 
     /// katere črke so v izbrani besedi in katere so na pravih mestih.  [15 točk]
     /// 
     /// Ko igralec ugane besedo, se mu izpiše čestitka in število
