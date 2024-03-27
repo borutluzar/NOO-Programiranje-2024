@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <None Update="Viri\words_alpha.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
