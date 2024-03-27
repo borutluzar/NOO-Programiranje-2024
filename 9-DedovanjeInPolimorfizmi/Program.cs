@@ -1,5 +1,4 @@
 ﻿using ShoppingCartExample;
-using System.Net;
 using System.Numerics;
 
 namespace DedovanjeInPolimorfizmi
@@ -12,18 +11,20 @@ namespace DedovanjeInPolimorfizmi
             // Vsi razredi v C# dedujejo od razreda Object
             Object obj = new Object();
             obj.ToString();
+            Console.WriteLine($"Klic metode ToString na objektu {nameof(obj)}: {obj.ToString()}");
 
-            
             // Naredimo instanci razredov Bicycle in EBike
             Bicycle kolo = new Bicycle(); // Bicycle deduje od Object
             kolo.FrameSize = 21;
+            kolo.Brand = "Esperia";
             Console.WriteLine($"Opis kolesa {nameof(kolo)}: {kolo.ToString()}");
 
             Bicycle kolo2 = new Bicycle();
             kolo2.FrameSize = 17;
+            kolo2.Brand = "Esperia";
             Console.WriteLine($"Opis kolesa {nameof(kolo2)}: {kolo2.ToString()}");
 
-            EBike eKolo = new EBike(); // EBike deduje od Bicycle
+            EBike eKolo = new EBike(); // EBike deduje od Bicycle            
             eKolo.FrameSize = 18;
             eKolo.BateryTime = 4;
             eKolo.ChangeGear(3);
@@ -35,7 +36,8 @@ namespace DedovanjeInPolimorfizmi
             // Konstruktorji podrazredov
             Coffee kava = new Coffee(3);
             Turkish turska = new Turkish(0, 5);
-
+            Sarajevska inat = new Sarajevska(18, 8, 2);
+            Console.WriteLine($"{inat.ToString()}");
 
             // Polimorfizmi
             Circle krog1 = new Circle(1, 3.4);
@@ -44,6 +46,8 @@ namespace DedovanjeInPolimorfizmi
 
             Rectangle pravokotnik1 = new Rectangle(4, 2, 6);
             Rectangle pravokotnik2 = new Rectangle(5, 3, 5.7);
+
+            Square square = new Square(6, 4);
 
             // Domača naloga: dopolnite strukturo razredov še s tremi podrazredi
             // (kvadrat, trikotnik, šestkotnik)
@@ -54,7 +58,8 @@ namespace DedovanjeInPolimorfizmi
                 krog2,
                 krog3,
                 pravokotnik1,
-                pravokotnik2
+                pravokotnik2,
+                square
             };
 
             foreach (Shape shp in lstShapes)
@@ -65,7 +70,8 @@ namespace DedovanjeInPolimorfizmi
                 // to preverimo z rezervirano besedo is
                 if (shp is Circle)
                 {
-                    double area = ((Circle)shp).Area();
+                    Circle circ = (Circle)shp;
+                    double area = circ.Area();
                     Console.WriteLine($"Ploščina lika {shp.ID} je {area:0.00}");
                 }
             }
@@ -106,15 +112,16 @@ namespace DedovanjeInPolimorfizmi
 
         /// <summary>
         /// Metodo ToString dedujemo iz razreda Object
-        /// </summary>        
+        /// </summary>                
         public override string ToString()
         {
-            string rezultat = $"Velikost okvirja: {this.FrameSize}\n" +
+            string rezultat = $"Lastnosti mojega kolesa so:\n" +
+                    $"Velikost okvirja: {this.FrameSize}\n" +
                     $"Število prestav: {this.NumGears}\n" +
                     $"Znamka: {this.Brand}";
 
             return rezultat;
-        }        
+        }
 
         public virtual void ChangeGear(int increaseBy)
         {
@@ -131,7 +138,7 @@ namespace DedovanjeInPolimorfizmi
         {
             // Z rezervirano besedo base povemo, da se sklicujemo na nadrazred.
             string rezultat = base.ToString() + "\n" +
-                    $"Čas vzdržljivosti baterije: {BateryTime}";
+                    $"Čas vzdržljivosti baterije: {this.BateryTime}";
 
             return rezultat;
         }
@@ -142,8 +149,8 @@ namespace DedovanjeInPolimorfizmi
             //this.CurrentGear += increaseBy;
             // ali
             base.ChangeGear(increaseBy);
-            
-            if(increaseBy > 0)
+
+            if (increaseBy > 0)
                 Console.WriteLine("Zvišanje prestave lahko zmanjša vzdržljivost baterije!");
         }
     }
@@ -164,7 +171,7 @@ namespace DedovanjeInPolimorfizmi
     {
         public Coffee(double quantity)
         {
-            Quantity = quantity;
+            this.Quantity = quantity;
         }
 
         public double Quantity { get; set; }
@@ -182,6 +189,34 @@ namespace DedovanjeInPolimorfizmi
         }
 
         public int PreparationTime { get; set; }
+    }
+
+    public class Sarajevska : Turkish
+    {
+        public Sarajevska(int bakingFactor, int preparationTime, double quantity) : base(quantity, preparationTime)
+        {
+            BakingFactor = bakingFactor;
+        }
+
+        public int BakingFactor { get; set; }
+
+        public override string ToString()
+        {
+            return $"Sarajevska kava {BakingFactor}-krat pečena, " +
+                $"pripravljana {this.PreparationTime} minut in s količino {this.Quantity}.";
+        }
+    }
+
+    public class Filtered : Coffee
+    {
+        public Filtered(int filterTime, string filterType, double quantity) : base(quantity)
+        {
+            FilteringTime = filterTime;
+            FilterType = filterType;
+        }
+
+        public int FilteringTime { get; set; }
+        public string FilterType { get; set; }
     }
 
 
@@ -232,6 +267,11 @@ namespace DedovanjeInPolimorfizmi
             B = b;
         }
 
+        public Rectangle() : this(0, 4, 5)
+        {
+
+        }
+
         public double A { get; set; }
 
         public double B { get; set; }
@@ -239,6 +279,21 @@ namespace DedovanjeInPolimorfizmi
         public override double Perimeter()
         {
             return 2 * A + 2 * B;
+        }
+    }
+
+    public class Square : Shape
+    {
+        public Square(int id, double a) : base(id)
+        {
+            A = a;
+        }
+
+        public double A { get; set; }
+
+        public override double Perimeter()
+        {
+            return 4 * A;
         }
     }
 }

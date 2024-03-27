@@ -34,7 +34,12 @@ namespace Izpit_2024_03_23
         /// </summary>
         public static void ResitevNaloge()
         {
-
+            
         }
+    }
+
+    public class MojRazred
+    {
+
     }
 }

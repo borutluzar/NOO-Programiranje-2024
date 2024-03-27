@@ -9,7 +9,7 @@ namespace Izpit_2024_03_23
     /// Vaše rešitve zapisujte v datoteke z imeni NalogaX,
     /// kjer je X številka naloge (datoteke so v tem projektu že pripravljene).
     /// 
-    /// Pri reševanju si lahko pomagate s kodo s predavanj,
+    /// Pri reševanju si lahko pomagate s kodo s predavanj in vaj,
     /// ter tudi z uradno dokumentacijo o C# in .Net 
     /// (torej z vsemi viri na domeni learn.microsoft.com).
     /// 
@@ -33,7 +33,9 @@ namespace Izpit_2024_03_23
 
         static void Main(string[] args)
         {
-            switch (ChooseSection<Naloge>())
+            Naloge tipNaloge = ChooseSection<Naloge>();
+            
+            switch (tipNaloge)
             {
                 case Naloge.Naloga1:
                     {

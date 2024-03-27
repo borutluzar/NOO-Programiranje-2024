@@ -35,8 +35,7 @@ namespace Izpit_2024_03_23
         /// V tej metodi se začne izvajati program za reševanje Naloge 2
         /// </summary>
         public static void ResitevNaloge()
-        {            
-
+        {
 
         }
     }
