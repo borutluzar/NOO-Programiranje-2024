@@ -14,7 +14,8 @@ namespace Izpit_2024_03_23
     /// ki naj pomeni izhod iz vnosa podatkov.                          [10 točk]
     /// 
     /// Pridobljeni podatki za vsakega študenta naj se zapišejo
-    /// kot lastnost v instanco razreda StudentData (ta razred bo torej imel dve lastnosti).
+    /// kot lastnost v instanco razreda StudentData 
+    /// (ta razred bo torej imel dve lastnosti).
     /// Vse instance shranite v seznam.                                 [5 točk]
     /// 
     /// V metodi v ukazno vrstico izpišite največje število doseženih točk

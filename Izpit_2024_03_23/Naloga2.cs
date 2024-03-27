@@ -20,7 +20,8 @@ namespace Izpit_2024_03_23
     /// Metodo ToString dopolnite v obeh podrazredih, da bo ustrezno 
     /// izpisovala tudi njuni posebni lastnosti.                [5 točk]
     /// 
-    /// V razredu Zgradba napišite metodo ŠteviloProstorov, ki bo vrnila število vseh prostorov,
+    /// V razredu Zgradba napišite metodo ŠteviloProstorov, 
+    /// ki bo vrnila število vseh prostorov,
     /// katerih površina je večja od danega parametra.          [7 točk]
     ///                                                         
     /// V metodi ResitevNaloge ustvarite tri instance razreda Hisa 
