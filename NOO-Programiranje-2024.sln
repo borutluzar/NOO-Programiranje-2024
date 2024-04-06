@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Izpit_2023_06_30", "Izpit_2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Izpit_2024_03_23", "Izpit_2024_03_23\Izpit_2024_03_23.csproj", "{5FB6DFF9-467E-4121-AA8D-1F3389FFEF0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Izpit_2024_04_06", "Izpit_2024_04_06\Izpit_2024_04_06.csproj", "{455CE95F-CFAC-4E06-8BEF-24374B047042}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{5FB6DFF9-467E-4121-AA8D-1F3389FFEF0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FB6DFF9-467E-4121-AA8D-1F3389FFEF0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FB6DFF9-467E-4121-AA8D-1F3389FFEF0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{455CE95F-CFAC-4E06-8BEF-24374B047042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{455CE95F-CFAC-4E06-8BEF-24374B047042}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{455CE95F-CFAC-4E06-8BEF-24374B047042}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{455CE95F-CFAC-4E06-8BEF-24374B047042}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
