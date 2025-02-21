@@ -167,8 +167,11 @@
             // Razmislite in na koncu preverite pravilnost izjave:
             bool test = !sonce && (!sneg || sonce || sneg && !sonce) || !(sonce && !sneg);
 
+
             bool seDrugPrimer = (sneg && !(sonce || sneg) || sonce && !sneg);
             Console.WriteLine($"Vrednost spremenljivke {nameof(seDrugPrimer)} je {seDrugPrimer}.");
+
+
 
             // ***********************************************
             // Enakosti in primerjanja

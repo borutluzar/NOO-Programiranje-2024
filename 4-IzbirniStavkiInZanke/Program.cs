@@ -1,4 +1,6 @@
-﻿namespace SelectStatementsAndLoops
+﻿using System.Runtime.InteropServices;
+
+namespace SelectStatementsAndLoops
 {
     internal class Program
     {
@@ -75,9 +77,9 @@
 
 
             // Kadar v stavku if - else zgolj prirejamo vrednost neki 
-            // spremenljivki, lahko uporabimo ternarni operator.
+            // spremenljivki, lahko uporabimo trojiški (ternarni) operator.
             // Sintaksa: POGOJ  ?  vrednost, če pogoj TRUE    :    vrednost, če pogoj FALSE 
-            int temperatura = 9;
+            int temperatura = -1;
             string rezultat = temperatura < 5 ? "Vreme je normalno" : "Vreme je nenormalno";
             Console.WriteLine($"{rezultat}");
 
@@ -95,6 +97,39 @@
             Console.WriteLine($"Izpis: {rezultat}");
 
 
+            int temp = 4;
+            bool sneg = false;
+            bool pocitnice = true;
+
+            // (a) Če so počitnice in je sneg in manj kot 5 stopinj => gremo smučat
+            // (b) Če niso počitnice in je sneg in manj kot 5 stopinj => učimo se doma
+            // (c) Če so počitnice in ni snega in je manj kot 5 stopinj => igramo karte
+            // (d) Če so počitnice in je sneg in je več kot 15 stopinj => čakamo, da se sneg stopi
+
+            if (temp < 5) // (a), (b), (c)
+            {
+                if (pocitnice == true && sneg == true) // (a)
+                {
+                    Console.WriteLine("Gremo smučat.");
+                }
+                else if (!pocitnice && sneg == true) // (b)
+                {
+                    Console.WriteLine("Učimo se doma.");
+                }
+                else if (pocitnice && sneg == false) // (c)
+                {
+                    Console.WriteLine("Igramo karte.");
+                }
+            }
+            else // (d)
+            {
+                if (temp > 15 && pocitnice == true && sneg == true)
+                {
+                    Console.WriteLine("Čakamo, da se sneg stopi.");
+                }
+            }
+
+
             // ***********************************************
             // Stavek switch
 
@@ -102,7 +137,7 @@
             // namesto strukture if - else if raje uporabimo stavek switch.
             // .Pri njem v glavi podamo spremenljivko, za katero opazujemo vrednost, 
             // nato pa v stavkih case določimo, kaj se v vsakem od možnih primerov lahko zgodi.
-            int danVTednu = 2;
+            int danVTednu = 5;
             switch (danVTednu)
             {
                 case 1: // V primeru, da je vrednost danVTednu enaka 1
@@ -161,6 +196,9 @@
                 case >= 4 and < 8:
                     Console.WriteLine("Danes je podaljšan vikend!");
                     break;
+                case > 7 or < 1:
+                    Console.WriteLine("Takega dneva pa v tednu ni!");
+                    break;
             }
             // Pazimo le, da za logične operacije uporabimo
             // rezervirani besedi and in or namesto && in ||
@@ -178,7 +216,7 @@
             while (i < 4)
             {
                 Console.WriteLine($"{nameof(i)} je enako {i}!");
-                i += 1;
+                i += 1; // i = i + 1;
             }
 
 
@@ -201,7 +239,7 @@
             // spremenljivke, ki jo uporabljamo za iterator
             // (običajno to spremenljivko v glavi zanke tudi definiramo),
             // ter korak oziroma spremembo vrednosti spremenljivke ob vsakem  prehodu zanke.
-            for (int k = 0; k < 4; k++)
+            for (int k = 0; k < 4; k = k + 1)
             {
                 Console.WriteLine($"k je enako {k}!");
             }
@@ -226,20 +264,23 @@
 
 
             // ZGLED 1
-            // Za dano velikost stranice kvadrata $a$ želimo na zaslon izrisati kvadrat iz zvezdic.
+            // Za dano velikost stranice kvadrata  a  želimo na zaslon izrisati kvadrat iz zvezdic.
             // Stranice kvadrata bodo zvezdice, notranjost pa bomo predstavili s presledki.
-            // V prvi vrstici bomo tako izpisali $a$ zvezdic, v naslednjih bo zvezdica samo prvi in zadnji znak,
+            // V prvi vrstici bomo tako izpisali a zvezdic, v naslednjih bo zvezdica samo prvi in zadnji znak,
             // ostali bodo presledki, medtem ko bodo v zadnji vrstici spet samo zvezdice.
             // V vsaki vrstici bo $a$ znakov.Za njihov izris bo poskrbela posebna zanka, ki bo gnezdena v
             // zanki, katera bo skrbela za prehod v novo vrstico.
             // Primer rešene naloge je naslednji:
-            int a = 10;
-            for (i = 0; i < a; i++) // Zanka, ki ob vsakem prehodu ustvari vrstico 
+            int a = 2;
+            for (int vrstica = 0; vrstica < a; vrstica++) // Zanka, ki ob vsakem prehodu ustvari vrstico 
             {
-                for (int j = 0; j < a; j++) // // Zanka, ki ob vsakem prehodu zapiše en znak
+                for (int stolpec = 0; stolpec < a; stolpec++) // // Zanka, ki ob vsakem prehodu zapiše en znak
                 {
                     char znakec = ' ';
-                    if (j == 0 || i == 0 || j == a - 1 || i == a - 1)
+                    // Preverimo, če smo v prvem stolpcu ali prvi vrstici
+                    // ali zadnjem stolpcu ali zadnji vrstici
+                    // - v tem primeru napišemo zvezdico
+                    if (stolpec == 0 || vrstica == 0 || stolpec == a - 1 || vrstica == a - 1)
                     {
                         znakec = '*';
                     }
@@ -250,7 +291,7 @@
 
 
             // ZGLED 2
-            // Za dano velikost šahovnice $a$ želimo na zaslon izrisati 
+            // Za dano velikost šahovnice a želimo na zaslon izrisati 
             // šahovnico, kjer so bela polja označena z O, črna pa z X.
             // Spodnje levo polje naj bo črno!
             // Primer rešene naloge je naslednji:
