@@ -9,7 +9,7 @@
             Console.WriteLine($"\nAritmetične operacije:\n");
 
             // Poznamo pet osnovnih operatorjev
-            int vsota = 3 + 4; // Rezultat: 7            
+            int vsota = 3 + 4; // Rezultat: 7
             // Ukaz se izvede po posameznih elementih:
             // 1. celoten ukaz -> int vsota = 3 + 4;
             //     2. definicija spremenljivke -> int vsota;
@@ -76,7 +76,7 @@
             Console.WriteLine($"Vrednost spremenljivke {nameof(izraz2)}: {izraz2}");
 
             // Zgled: izračun indeksa telesne mase
-            double masa = 90.4;
+            double masa = 80.4;
             double visina = 1.80;
             double indeksTelesneMase = masa / (visina * visina);
             Console.WriteLine($"Indeks naše telesne mase je {indeksTelesneMase:0.00}");
@@ -109,7 +109,8 @@
             Console.WriteLine($"Trenutna vrednost spremenljivke stevec je {stevec}");
             stevec -= 2; // Ekvivalenten ukaz kot stevec = stevec - 2;
             Console.WriteLine($"Trenutna vrednost spremenljivke stevec je {stevec}");
-
+            stevec /= 2; // Ekvivalenten ukaz kot stevec = stevec / 2;
+            Console.WriteLine($"Trenutna vrednost spremenljivke stevec je {stevec}");
 
 
             // ***********************************************
@@ -125,6 +126,10 @@
             // Izračunajmo še obseg kroga z danim polmerom
             double polmer = 2;
             double obseg = 2 * Math.PI * polmer;
+            Console.WriteLine($"Obseg kroga s polmerom {polmer} je {obseg}.");
+
+            //double ploscina = Math.PI * polmer * polmer;
+            double ploscina = Math.PI * Math.Pow(polmer, 2);
             Console.WriteLine($"Obseg kroga s polmerom {polmer} je {obseg}.");
 
             // Zgornji izpis nam izpiše precej decimalk. To lahko omejimo
@@ -159,6 +164,8 @@
             // Na koncu: !(false) -> true
             Console.WriteLine($"Vrednost spremenljivke {nameof(seEnaNegacijaSneg)} je {seEnaNegacijaSneg}.");
 
+            // Razmislite in na koncu preverite pravilnost izjave:
+            bool test = !sonce && (!sneg || sonce || sneg && !sonce) || !(sonce && !sneg);
 
             bool seDrugPrimer = (sneg && !(sonce || sneg) || sonce && !sneg);
             Console.WriteLine($"Vrednost spremenljivke {nameof(seDrugPrimer)} je {seDrugPrimer}.");

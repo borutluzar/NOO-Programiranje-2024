@@ -22,9 +22,8 @@ namespace VariablesAndTypes
             Console.WriteLine($"Izpis celoštevilskih spremenljivk: \n");
 
             // Najbolj običajen (pogost) tip je int.
-            int mojaSpremenljivka;
+            int mojaSpremenljivka;            
             mojaSpremenljivka = 30;
-
 
             // Vrednost lahko zapišemo v desetiškem sistemu...
             int celoStevilo = 21;
@@ -82,7 +81,6 @@ namespace VariablesAndTypes
             Console.WriteLine($"Izpis vrednosti spremenljivke tipa decimal: {realnoSteviloDecimal}");
 
 
-
             // ***********************************************
             // Tip, ki sprejema le dve logični vrednosti true in false, je bool
             Console.WriteLine($"\n\nIzpis logične spremenljivke: \n");
@@ -98,8 +96,7 @@ namespace VariablesAndTypes
 
             char znak = 'A'; // Vrednost je lahko samo en znak, pisati ga moramo v enojnih narekovajih
             Console.WriteLine($"Izpis vrednosti spremenljivke tipa char: {znak}");
-
-
+            
 
             // ***********************************************
             // Tip, ki sprejema besedila, je string
@@ -114,7 +111,6 @@ namespace VariablesAndTypes
             // Npr. znak za tabulator zapišemo z \t
             string naslov = "Ime in priimek\nUlica in hišna številka\nPošta";
             Console.WriteLine($"Izpis vrednosti spremenljivke z ubežnimi zaporedji:\n{naslov}");
-
 
 
             // ***********************************************

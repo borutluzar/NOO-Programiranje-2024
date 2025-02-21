@@ -11,6 +11,11 @@ namespace Introduction
         // dane vhodne podatke izvedejo zaporedje ukazov in vrnejo rezultat
         static void Main(string[] args)
         {
+            /*
+             Moj komentar, ki je postavljen
+            preko nekaj vrstic
+             */
+
             // Spodnji ukaz 'WriteLine' ob zagonu v ukazni vrstici izpiše besedilo v narekovajih - Pozdravljen, svet!
             Console.WriteLine("Pozdravljen, svet!");
             
