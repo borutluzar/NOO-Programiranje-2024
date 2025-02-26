@@ -340,7 +340,7 @@ namespace SelectStatementsAndLoops
             bool nadaljuj = true;
             while (nadaljuj /* Na začetku je true */)
             {
-                Console.WriteLine("Kdo je najboljši nogometaš na svetu?");
+                Console.Write("Kdo je najboljši nogometaš na svetu?");
                 string odgovor = Console.ReadLine();
                 if (odgovor == "Messi")
                 {
@@ -376,6 +376,7 @@ namespace SelectStatementsAndLoops
             // Zgled 3: Izpišimo prvih n členov Fibonacijevega zaporedja
             // f[n+2] = f[n+1] + f[n]
             // f[0] = 1, f[1] = 1
+            // 1, 1, 2, 3, 5, 8, 13, 21, 34...
             Console.WriteLine($"\nIzpis členov Fibonacijevega zaporedja:\n");
             int n = 50;
 
