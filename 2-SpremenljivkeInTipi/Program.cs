@@ -3,7 +3,7 @@
 namespace VariablesAndTypes
 {
     public class Program
-    {
+    {        
         static void Main(string[] args)
         {
             // Definirajmo nekaj spremenljivk različnih tipov
@@ -22,8 +22,8 @@ namespace VariablesAndTypes
             Console.WriteLine($"Izpis celoštevilskih spremenljivk: \n");
 
             // Najbolj običajen (pogost) tip je int.
-            int mojaSpremenljivka;            
-            mojaSpremenljivka = 30;
+            int mojaSpremenljivka;
+            mojaSpremenljivka = 3000;
 
             // Vrednost lahko zapišemo v desetiškem sistemu...
             int celoStevilo = 21;
@@ -63,7 +63,7 @@ namespace VariablesAndTypes
             // vrednosti sprejemajo realna števila:
             Console.WriteLine($"\n\nIzpis realnih spremenljivk: \n");
 
-            // Najbolj običajen tip je double.            
+            // Najbolj običajen tip je double.
             double realnoStevilo = 3.14; // Vedno uporabljamo decimalno piko
             Console.WriteLine($"Izpis vrednosti spremenljivke tipa double: {realnoStevilo}");
 
@@ -94,7 +94,7 @@ namespace VariablesAndTypes
             // Tip, ki sprejema znake, je char
             Console.WriteLine($"\n\nIzpis spremenljivke, ki sprejema znake: \n");
 
-            char znak = 'A'; // Vrednost je lahko samo en znak, pisati ga moramo v enojnih narekovajih
+            char znak = 'B'; // Vrednost je lahko samo en znak, pisati ga moramo v enojnih narekovajih
             Console.WriteLine($"Izpis vrednosti spremenljivke tipa char: {znak}");
             
 

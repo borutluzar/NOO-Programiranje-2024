@@ -79,14 +79,14 @@ namespace SelectStatementsAndLoops
             // Kadar v stavku if - else zgolj prirejamo vrednost neki 
             // spremenljivki, lahko uporabimo trojiški (ternarni) operator.
             // Sintaksa: POGOJ  ?  vrednost, če pogoj TRUE    :    vrednost, če pogoj FALSE 
-            int temperatura = -1;
-            string rezultat = temperatura < 5 ? "Vreme je normalno" : "Vreme je nenormalno";
+            int temperatura = 10;
+            string rezultat = temperatura < 15 ? "Vreme je normalno" : "Vreme je nenormalno";
             Console.WriteLine($"{rezultat}");
 
 
             // Zgled: zapišimo zgornjo kodo z običajnim stavkom IF
             rezultat = "";
-            if (temperatura < 5)
+            if (temperatura < 15)
             {
                 rezultat = "Vreme je normalno";
             }
@@ -96,15 +96,24 @@ namespace SelectStatementsAndLoops
             }
             Console.WriteLine($"Izpis: {rezultat}");
 
-
-            int temp = 4;
-            bool sneg = false;
+            
+            Console.Write($"Vnesite temperaturo: ");
+            int temp = int.Parse(Console.ReadLine());
+            bool sneg = true;
             bool pocitnice = true;
 
             // (a) Če so počitnice in je sneg in manj kot 5 stopinj => gremo smučat
             // (b) Če niso počitnice in je sneg in manj kot 5 stopinj => učimo se doma
             // (c) Če so počitnice in ni snega in je manj kot 5 stopinj => igramo karte
             // (d) Če so počitnice in je sneg in je več kot 15 stopinj => čakamo, da se sneg stopi
+
+            bool moznostA = pocitnice == true && sneg == true && temp < 5;
+            if (moznostA)
+            {
+                Console.WriteLine("Gremo smučat.");
+            }
+            // ...
+
 
             if (temp < 5) // (a), (b), (c)
             {
@@ -203,6 +212,19 @@ namespace SelectStatementsAndLoops
             // Pazimo le, da za logične operacije uporabimo
             // rezervirani besedi and in or namesto && in ||
 
+            char testniZnak = 'A';
+            switch (testniZnak)
+            {
+                case 'b':
+                    Console.WriteLine($"Znakec je {testniZnak}");
+                    break;
+                case 'c':
+                    Console.WriteLine($"Znakec je {testniZnak}");
+                    break;
+                case 'A':
+                    Console.WriteLine($"Znakec je {testniZnak}");
+                    break;
+            }
 
 
             // ***********************************************

@@ -53,7 +53,8 @@
             // Ko vrednost beremo iz spremenljivke,
             // pripone ne moremo uporabiti, zato prevedbo zapišemo takole:
             int deljenec = 3;
-            realenKvocient = deljenec / (double)4;
+            int delitelj = 4;
+            realenKvocient = (double)deljenec / delitelj;
             Console.WriteLine($"Operator / na vsaj eni realni vrednosti vrne: 3 / 4 = {realenKvocient}");
 
             // Opozorimo še na to, da ne zadošča imeti ustrezno definirane spremenljivke
@@ -67,18 +68,18 @@
             //rezultat = 3 / 4 * 7; // Najprej: 3 / 4 = 0, potem pa še 0 * 7 = 0
             Console.WriteLine($"Vrstni red določimo s pomočjo oklepajev. Rezultat v tem primeru je {rezultat}.");
             rezultat = 3 + (4 * 7);
-            Console.WriteLine($"W tem primeru pa {rezultat}.");
+            Console.WriteLine($"V tem primeru pa {rezultat}.");
 
             // Označevanje z oklepaji seveda še bolj prav pride pri kombiniranju različnih tipov vrednosti
-            double izraz1 = (double)(3 / 4) * 5; // Rezultat: 0,0
-            double izraz2 = ((double)3 / 4) * 5; // Rezultat: 3,75
+            double izraz1 = (double)(3 / 4) * 5; // Rezultat: 0.0
+            double izraz2 = ((double)3 / 4) * 5; // Rezultat: 3.75
             Console.WriteLine($"Vrednost spremenljivke {nameof(izraz1)}: {izraz1}");
             Console.WriteLine($"Vrednost spremenljivke {nameof(izraz2)}: {izraz2}");
 
             // Zgled: izračun indeksa telesne mase
-            double masa = 80.4;
+            double teza = 80.4;
             double visina = 1.80;
-            double indeksTelesneMase = masa / (visina * visina);
+            double indeksTelesneMase = teza / (visina * visina);
             Console.WriteLine($"Indeks naše telesne mase je {indeksTelesneMase:0.00}");
 
             // Operator + lahko uporabimo tudi nad neštevilskimi vrednostmi,
@@ -111,15 +112,18 @@
             Console.WriteLine($"Trenutna vrednost spremenljivke stevec je {stevec}");
             stevec /= 2; // Ekvivalenten ukaz kot stevec = stevec / 2;
             Console.WriteLine($"Trenutna vrednost spremenljivke stevec je {stevec}");
+            stevec *= 2; // Ekvivalenten ukaz kot stevec = stevec * 2;
+            Console.WriteLine($"Trenutna vrednost spremenljivke stevec je {stevec}");
 
 
-            // ***********************************************
+            // ***************************************************
             // Knjižnica Math
             Console.WriteLine($"\nKnjižnica Math:\n");
 
             // Funkcija Pow za izračun potence dveh števil se skriva v knjižnici Math
             int osnova = 2;
             int eksponent = 3;
+            
             double potenca = Math.Pow(osnova, eksponent);
             Console.WriteLine($"Potenca {osnova} na {eksponent} je {potenca}.");
 
@@ -166,7 +170,7 @@
 
             // Razmislite in na koncu preverite pravilnost izjave:
             bool test = !sonce && (!sneg || sonce || sneg && !sonce) || !(sonce && !sneg);
-
+            Console.WriteLine($"Vrednost spremenljivke {nameof(test)} je {test}.");
 
             bool seDrugPrimer = (sneg && !(sonce || sneg) || sonce && !sneg);
             Console.WriteLine($"Vrednost spremenljivke {nameof(seDrugPrimer)} je {seDrugPrimer}.");
