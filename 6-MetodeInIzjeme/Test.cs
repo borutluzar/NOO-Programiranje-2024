@@ -13,10 +13,15 @@ namespace Methods.MySuperApplicableMethods
         /// </summary>
         public static void MojaMetoda()
         {
-            return;
             Console.WriteLine($"Moja super nova metoda.");
         }
+    }
 
-
+    public class DrugRazred
+    {
+        public static void MojaMetoda()
+        {
+            Console.WriteLine($"Moja super druga nova metoda.");
+        }
     }
 }

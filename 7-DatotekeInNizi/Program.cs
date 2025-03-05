@@ -11,7 +11,7 @@ namespace FilesAndStrings
             // Nizi
 
             // Delo z nizi bomo opisali v metodi StringManipulation.
-            //StringManipulation();
+            StringManipulation();
 
 
 
@@ -26,10 +26,11 @@ namespace FilesAndStrings
             //ReadingFromFiles();
 
             // Primer branja iz datoteke
+            /*
             List<string> lstNews = ReadNews();
             foreach (string title in lstNews)
                 Console.WriteLine(title);
-
+            */
             Console.Read();
         }
 
@@ -165,10 +166,9 @@ namespace FilesAndStrings
             }
 
             // V podatkih lahko tudi zamenjamo znake (ali pa kar cele dele besedila)
-            abeceda = abeceda
-                .Replace("\t", ",")
-                .Replace(" ", "")
-                .Replace(",,", "");
+            abeceda = abeceda.Replace("\t", ",");
+            abeceda = abeceda.Replace(" ", "");
+            abeceda = abeceda.Replace(",,", "");
             Console.WriteLine($"Izpis po Replace(): [{abeceda}]");
 
             string messi = "Messi1234";

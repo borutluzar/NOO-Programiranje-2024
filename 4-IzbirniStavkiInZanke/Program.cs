@@ -96,7 +96,7 @@ namespace SelectStatementsAndLoops
             }
             Console.WriteLine($"Izpis: {rezultat}");
 
-            
+
             Console.Write($"Vnesite temperaturo: ");
             int temp = int.Parse(Console.ReadLine());
             bool sneg = true;
@@ -261,7 +261,7 @@ namespace SelectStatementsAndLoops
             // spremenljivke, ki jo uporabljamo za iterator
             // (običajno to spremenljivko v glavi zanke tudi definiramo),
             // ter korak oziroma spremembo vrednosti spremenljivke ob vsakem  prehodu zanke.
-            for (int k = 0; k < 4; k = k + 1)
+            for (int k = 0; k < 4; k++)
             {
                 Console.WriteLine($"k je enako {k}!");
             }
@@ -293,20 +293,23 @@ namespace SelectStatementsAndLoops
             // V vsaki vrstici bo $a$ znakov.Za njihov izris bo poskrbela posebna zanka, ki bo gnezdena v
             // zanki, katera bo skrbela za prehod v novo vrstico.
             // Primer rešene naloge je naslednji:
-            int a = 2;
+            int a = 10;
+            
             for (int vrstica = 0; vrstica < a; vrstica++) // Zanka, ki ob vsakem prehodu ustvari vrstico 
             {
                 for (int stolpec = 0; stolpec < a; stolpec++) // // Zanka, ki ob vsakem prehodu zapiše en znak
                 {
-                    char znakec = ' ';
                     // Preverimo, če smo v prvem stolpcu ali prvi vrstici
                     // ali zadnjem stolpcu ali zadnji vrstici
                     // - v tem primeru napišemo zvezdico
                     if (stolpec == 0 || vrstica == 0 || stolpec == a - 1 || vrstica == a - 1)
                     {
-                        znakec = '*';
+                        Console.Write('*'); // Uporabimo ukaz Write, da ne skočimo v novo vrstico!
                     }
-                    Console.Write(znakec); // Uporabimo ukaz Write, da ne skočimo v novo vrstico!
+                    else
+                    {
+                        Console.Write(' '); // Uporabimo ukaz Write, da ne skočimo v novo vrstico!
+                    }                      
                 }
                 Console.WriteLine(); // Ko končamo zapis ene vrstice, gremo v novo
             }

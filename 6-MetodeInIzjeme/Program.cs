@@ -18,11 +18,14 @@ namespace Methods
             // V tem projektu bomo v metodi Main druge metode samo klicali,
             // zapisovali pa jih bomo izven nje, kot samostojne delčke kode
 
+            // Pokličimo funkcijo Pozdrav
+            Pozdrav();
+
             // Izvedimo metodo Kvocient in izpišimo njen rezultat
             int a = 7;
             int b = 13;
-            double result = Kvocient(a, b);
-            Console.WriteLine($"Rezultat metode {nameof(Kvocient)} za parametra {a} in {b} je {result:0.0000}");
+            double rezultat = Kvocient(a, b);
+            Console.WriteLine($"Rezultat metode {nameof(Kvocient)} za parametra {a} in {b} je {rezultat:0.0000}");
 
             double aa = 9.0;
             double result2 = Kvocient(aa, b);
@@ -41,11 +44,11 @@ namespace Methods
 
             double bmi = BodyMassIndex(mass,height);
             Console.WriteLine($"Indeks naše telesne mase je: {bmi:0.00}");
+            */
 
             // Klic metode Quotient
             double quotient = Quotient(12, 13);
             Console.WriteLine($"Rezultat deljenja je {quotient:0.000}");
-            */
 
 
             // Zgled: Metoda, ki dobi podatke o študentih,
@@ -62,8 +65,8 @@ namespace Methods
             */
 
             // Primer klica metode iz novega (razred MojeMetode) razreda
-            Methods.MySuperApplicableMethods.MojeMetode.MojaMetoda();
-
+            Methods.MySuperApplicableMethods.DrugRazred.MojaMetoda();
+            
 
             // Izjeme
             /*
@@ -86,7 +89,7 @@ namespace Methods
 
             // Primer napake pri delu s tabelo
             string[] tblZivali = new string[5] { "puran", "glista", "svinja", "zebra", "mravljinčar" };
-
+                        
             try
             {
                 Console.WriteLine($"{tblZivali[5]}");
@@ -99,13 +102,12 @@ namespace Methods
             {
                 Console.WriteLine($"Prišlo je do neke popolnoma druge napake:\n{ex.Message}");
             }
+            
 
-
-            // In še klic metode GetPatientsHeight
-            /*
+            // In še klic metode GetPatientsHeight            
             int patientsHeight = GetPatientsHeight();
             Console.WriteLine($"Višina pacienta je {patientsHeight}");
-            */
+            
 
             //Console.Read();
 
@@ -120,6 +122,15 @@ namespace Methods
             ComputingQuestions();
 
             Console.Read();
+        }
+
+        /// <summary>
+        /// Naša prva metoda, s katero bomo spoznali
+        /// čudovit svet metod v C#!
+        /// </summary>
+        static void Pozdrav()
+        {
+            Console.WriteLine("Hello, world! How are you?");            
         }
 
         static double PovprecnaOcena()
@@ -396,7 +407,11 @@ namespace Methods
             int upperLimit = 8;
             while (true)
             {
-                upperLimit *= (countCorrect / 5) + 1;
+                if (countCorrect % 5 == 0)
+                {
+                    upperLimit *= (countCorrect / 5) + 1;
+                }
+
                 int num1 = rnd.Next(1, upperLimit);
                 int num2 = rnd.Next(1, upperLimit);
                 int num3 = rnd.Next(1, 10);
@@ -435,7 +450,7 @@ namespace Methods
                 finally
                 {
                     Console.WriteLine();
-                }
+                }                
             }
             return countCorrect;
         }
@@ -461,7 +476,7 @@ namespace Methods
                     return "/";
                 default:
                     // Vržemo izjemo nazaj na pozicijo klica metode
-                    throw new Exception("GetOperator::Operacija s to vrednostjo ni predvidena!");
+                    throw new Exception($"GetOperator::Operacija z vrednostjo {operation} ni predvidena!");
             }
         }
 
