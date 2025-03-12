@@ -25,6 +25,8 @@ namespace FilesAndStrings
             // Branje iz datoteke
             //ReadingFromFiles();
 
+
+
             // Primer branja iz datoteke
             /*
             List<string> lstNews = ReadNews();
@@ -40,19 +42,25 @@ namespace FilesAndStrings
         /// </summary>
         static void WritingInFiles()
         {
-            // Z datoteko se povežemo s pomočjo razreda StreamWriter
-            StreamWriter swFile = new StreamWriter("PRA-UvP.blaz", true); // Relativna pot do datoteke
+            // Če želimo ustvariti novo mapo:
+            //Directory.CreateDirectory("c:/Temp/Neobstajam");
 
+
+            // Z datoteko se povežemo s pomočjo razreda StreamWriter
+            StreamWriter swFile = new StreamWriter("mojaPrvaDatoteka.txt", true); // Relativna pot do datoteke
+            
             // Pridobimo trenutni čas in datum
             DateTime dtNow = DateTime.Now;
 
             // Zapišimo ga v datoteko skupaj s podatki o vremenu
-            swFile.WriteLine($"Zapis je bil ustvarjen: {dtNow:d. M. yyyy HH:mm:ss}");
-            swFile.WriteLine("-1");
-            swFile.WriteLine("Sončno");
-            swFile.WriteLine("Malo pa sneži.");
+            swFile.WriteLine($"Zapis je bil ustvarjen: {dtNow:d. M. yyyy HH:mm:ss.fff}");
+            Random rnd = new Random();
+            swFile.WriteLine(rnd.Next(4,21));
 
-            // swFile.Flush(); // Funkcija, ki omogoča sprotni zapis v datoteko (že preden jo zapremo)
+            swFile.Flush(); // Funkcija, ki omogoča sprotni zapis v datoteko (že preden jo zapremo)
+
+            swFile.WriteLine("Sončno");
+            swFile.WriteLine("Raje bi bili zunaj, čeprav se že mrači.");            
 
             // Zaprimo datoteko
             swFile.Close();
@@ -81,13 +89,14 @@ namespace FilesAndStrings
         /// </summary>
         static void ReadingFromFiles()
         {
-            string fileName = "PRA-UvP.txt";
+            string fileName = "mojaPrvaDatoteka.txt";
             StreamReader srFile = new StreamReader(fileName);
 
             Console.WriteLine($"Beremo iz datoteke {fileName}\n");
             int count = 0;
             int countTemps = 0;
             double totalTemps = 0;
+            
             while (srFile.EndOfStream == false)
             {
                 count++;
@@ -102,7 +111,7 @@ namespace FilesAndStrings
                 }
             }
 
-            Console.WriteLine($"Povprečna temperatura je: {totalTemps / countTemps}");
+            Console.WriteLine($"Povprečna temperatura je: {totalTemps / countTemps:0.00}");
 
             // Datoteko, ki smo jo prebirali, še zapremo
             srFile.Close();
@@ -185,11 +194,33 @@ namespace FilesAndStrings
             
 
             int letoRojstva = int.Parse(emso.Substring(4, 3));
+            if (emso[4] == '0')
+            {
+                letoRojstva += 2000;
+            }
+            else
+            {
+                letoRojstva += 1000;
+            }
+            Console.WriteLine($"Leto rojstva: {letoRojstva}");
+
+            // Andrejev predlog
+            int letoRojstvaAndrej = 0;
+            if (emso[4] == '0')
+            {
+                letnica = "2" + letnica;
+            }
+            else
+            {
+                letnica = "1" + letnica;
+            }
+            letoRojstvaAndrej = int.Parse(letnica);
+
 
             // Nize lahko obravnavamo kot tabele znakov.
             // Po nizu se tako lahko sprehodimo z zanko foreach
             // in pregledamo vse njegove znake.
-            int stevilo0 = 0;
+            int stevilo0 = 0;            
             foreach (char znak in emso)
             {
                 Console.WriteLine(znak);
@@ -200,15 +231,7 @@ namespace FilesAndStrings
             }
             Console.WriteLine($"Število 0 v nizu {nameof(emso)} je {stevilo0}");
 
-            if (emso[4] == '0')
-            {
-                letoRojstva += 2000;
-            }
-            else
-            {
-                letoRojstva += 1000;
-            }
-            Console.WriteLine($"Leto rojstva: {letoRojstva}");
+            
 
             // Izpis zadnjega znaka niza na dva načina:
             string kompliciranNiz = "aksfbweijnač,xpwqmxBLsnanč";

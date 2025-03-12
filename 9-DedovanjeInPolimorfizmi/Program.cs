@@ -9,7 +9,7 @@ namespace DedovanjeInPolimorfizmi
         {
             // Naredimo instanco razreda Object
             // Vsi razredi v C# dedujejo od razreda Object
-            Object obj = new Object();
+            Object obj = new object();
             obj.ToString();
             Console.WriteLine($"Klic metode ToString na objektu {nameof(obj)}: {obj.ToString()}");
 
@@ -35,7 +35,7 @@ namespace DedovanjeInPolimorfizmi
 
             // Konstruktorji podrazredov
             Coffee kava = new Coffee(3);
-            Turkish turska = new Turkish(0, 5);
+            Turkish turska = new Turkish(2, 5);
             Sarajevska inat = new Sarajevska(18, 8, 2);
             Console.WriteLine($"{inat.ToString()}");
 
@@ -65,7 +65,7 @@ namespace DedovanjeInPolimorfizmi
             foreach (Shape shp in lstShapes)
             {
                 Console.WriteLine($"Obseg lika {shp.ID} je {shp.Perimeter():0.00}");
-
+                
                 // Če želimo preveriti, ali imamo opravka s posebnim tipom,
                 // to preverimo z rezervirano besedo is
                 if (shp is Circle)
@@ -189,6 +189,8 @@ namespace DedovanjeInPolimorfizmi
         }
 
         public int PreparationTime { get; set; }
+
+        public string Intensity { get; set; }
     }
 
     public class Sarajevska : Turkish
@@ -196,6 +198,7 @@ namespace DedovanjeInPolimorfizmi
         public Sarajevska(int bakingFactor, int preparationTime, double quantity) : base(quantity, preparationTime)
         {
             BakingFactor = bakingFactor;
+            Intensity = "ekstra močna";
         }
 
         public int BakingFactor { get; set; }
@@ -282,18 +285,13 @@ namespace DedovanjeInPolimorfizmi
         }
     }
 
-    public class Square : Shape
+    public class Square : Rectangle
     {
-        public Square(int id, double a) : base(id)
+        public Square(int id, double a) : base(id, a, a)
         {
             A = a;
         }
 
         public double A { get; set; }
-
-        public override double Perimeter()
-        {
-            return 4 * A;
-        }
     }
 }

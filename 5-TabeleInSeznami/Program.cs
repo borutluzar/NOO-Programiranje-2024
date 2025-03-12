@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 
 namespace ArraysAndLists
 {
@@ -24,15 +25,15 @@ namespace ArraysAndLists
             tabela = new int[10]; // 10 določa število polj, ki jih imamo na voljo
 
             // Vrednost v tabeli na indeksu k določimo takole:
-            int k = 7;
-            tabela[k] = 13;
+            int indeks = 7;
+            tabela[indeks] = 13;
 
             // Če imamo podatke znane že v naprej, lahko tabelo inicializiramo skupaj z njimi,
             // pri čemer nam ni treba povedati njene dimenzije
             string[] dnevi = new string[] { "ponedeljek", "torek", "sreda" };
 
             // Za izpis vrednosti v tabeli uporabimo npr.
-            // zanko foreach
+            // zanko foreach            
             foreach (string dan in dnevi)
             {
                 Console.WriteLine(dan);
@@ -53,7 +54,7 @@ namespace ArraysAndLists
             // Določimo število mesecev varčevanja
             int months = 24;
             // Določimo glavnico
-            decimal principalAmount = 1000;
+            decimal principalAmount = 1000M;
             // Določimo obrestno mero
             decimal intRate = 0.0678M; // 6,78%
 
@@ -86,10 +87,10 @@ namespace ArraysAndLists
             // Tabelo z dvema dimenzijama definiramo tako,
             // da pri tipu dodama dva para oglatih oklepajev
             int[][] tabela2D = new int[10][];
-            
+
             // Podobno definiramo tabelo s 3 dimenzijami itd.
-            //int[][][] tabela3D = new int[10][][];
-            
+            int[][][] tabela3D = new int[10][][];
+
 
             // Število polj povemo le za prvo dimenzijo.
             // Vsako polje v prvi dimenziji vsebuje enodimenzionalno
@@ -126,7 +127,7 @@ namespace ArraysAndLists
                 {
                     // Slučajno izberemo celo število 
                     // med 0, 1 in 2
-                    int type = rnd.Next(3);
+                    int type = rnd.Next(5);
 
                     // Glede na rezultat zapišemo vrednost
                     switch (type)
@@ -153,7 +154,7 @@ namespace ArraysAndLists
 
             // Preverimo razred Random pri metu kocke
             int[] tblSestevki = new int[6];
-            int stevec = 1_000_000;
+            int stevec = 10_000_000;
 
             for (int i = 0; i < stevec; i++)
             {
@@ -179,64 +180,63 @@ namespace ArraysAndLists
             List<int> seznamStevil = new List<int>(); // Pri inicializaciji ne določimo njegove velikosti
 
             // Podobno kot pri tabelah, lahko že ob inicializaciji naštejemo nekaj vrednosti
-            List<string> lstShopping = new List<string>() { "čokolada", "bonboni", "pralni prašek" };
+            List<string> seznamNakupovalni = new List<string>() { "čokolada", "bonboni", "pralni prašek" };
 
-            Console.WriteLine($"Število elementov v seznamu je {lstShopping.Count}");
+            Console.WriteLine($"Število elementov v seznamu je {seznamNakupovalni.Count}");
 
             // Ali pa jih naknadno dodamo z ukazom Add
-            lstShopping.Add("banane");
-            lstShopping.Add("burek");
-            lstShopping.Add("jogurt");
-            lstShopping.Add("časopis");
+            seznamNakupovalni.Add("banane");
+            seznamNakupovalni.Add("burek");
+            seznamNakupovalni.Add("jogurt");
+            seznamNakupovalni.Add("časopis");
 
             // Če želimo prepisati vrednost na točno določenem indeksu,
             // to storimo enako kot pri tabelah
-            lstShopping[0] = "ananas";
-            lstShopping[3] = "avokado";
+            seznamNakupovalni[0] = "ananas";
+            seznamNakupovalni[3] = "avokado";
 
-            lstShopping.Insert(0, "čokolada");
+            seznamNakupovalni.Insert(0, "čokolada");
 
             // Uporabimo lahko še ukaz RemoveAt, ki vrednost z določenega
             // indeksa izbriše
-            lstShopping.RemoveAt(1);
+            seznamNakupovalni.RemoveAt(1);
 
             // Če želimo izbrisati točno določen element,
             // to storimo z ukazom Remove
-            lstShopping.Remove("avokado");
+            seznamNakupovalni.Remove("avokado");
 
-
-            foreach (string article in lstShopping)
+            foreach (string article in seznamNakupovalni)
             {
                 Console.WriteLine(article);
                 // POZOR - V zanki foreach ne moremo spreminjati tabele,
                 // po kateri iteriramo niti elementa, ki vsebuje iterativne vrednosti!
                 // Npr. ukaz:
-                // lstShopping.RemoveAt(0);
+                //seznamNakupovalni.RemoveAt(0);
                 // javi napako ob izvajanju!
             }
 
             // Odstranjevanje elementa lahko naredimo
             // s pomočjo zanke for
-            for (int i = 0; lstShopping.Count > 0; /* Ta stavek izpustimo, ker ga ne rabimo */)
+            for (int i = 0; seznamNakupovalni.Count > 0; /* Ta stavek izpustimo, ker ga ne rabimo */)
             {
-                Console.WriteLine(lstShopping[i]);
-                lstShopping.RemoveAt(i);
+                Console.WriteLine(seznamNakupovalni[i]);
+                seznamNakupovalni.RemoveAt(i);
             }
-            Console.WriteLine($"V našem seznamu je {lstShopping.Count} elementov.");
+            Console.WriteLine($"V našem seznamu je {seznamNakupovalni.Count} elementov.");
 
             // Primer 2: enako kot zgoraj, vendar z izpisovanjem
             // od zadnjega k prvemu elementu
-            lstShopping.Add("brokoli");
-            lstShopping.Add("zelena");
-            lstShopping.Add("riž");
-            lstShopping.Add("koleraba");
+            seznamNakupovalni.Add("brokoli");
+            seznamNakupovalni.Add("zelena");
+            seznamNakupovalni.Add("riž");
+            seznamNakupovalni.Add("koleraba");
 
-            for (int i = lstShopping.Count - 1; i >= 0; i--)
+            for (int i = seznamNakupovalni.Count - 1; i >= 0; i--)
             {
-                Console.WriteLine(lstShopping[i]);
-                lstShopping.RemoveAt(i);
+                Console.WriteLine(seznamNakupovalni[i]);
+                seznamNakupovalni.RemoveAt(i);
             }
-            Console.WriteLine($"V našem seznamu je {lstShopping.Count} elementov.");
+            Console.WriteLine($"V našem seznamu je {seznamNakupovalni.Count} elementov.");
 
 
             // ZGLED
@@ -247,10 +247,10 @@ namespace ArraysAndLists
             int n = 100_000;
 
             List<int> lstSeznamSodih = new List<int>();
-            for(int i = 0; i < n; i++)
+            for (int i = 0; i < n; i++)
             {
                 int val = rnd.Next(n);
-                if(val % 2 == 0)
+                if (val % 2 == 0)
                 {
                     lstSeznamSodih.Add(val);
                 }

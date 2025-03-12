@@ -294,7 +294,7 @@ namespace SelectStatementsAndLoops
             // zanki, katera bo skrbela za prehod v novo vrstico.
             // Primer rešene naloge je naslednji:
             int a = 10;
-            
+
             for (int vrstica = 0; vrstica < a; vrstica++) // Zanka, ki ob vsakem prehodu ustvari vrstico 
             {
                 for (int stolpec = 0; stolpec < a; stolpec++) // // Zanka, ki ob vsakem prehodu zapiše en znak
@@ -309,7 +309,7 @@ namespace SelectStatementsAndLoops
                     else
                     {
                         Console.Write(' '); // Uporabimo ukaz Write, da ne skočimo v novo vrstico!
-                    }                      
+                    }
                 }
                 Console.WriteLine(); // Ko končamo zapis ene vrstice, gremo v novo
             }

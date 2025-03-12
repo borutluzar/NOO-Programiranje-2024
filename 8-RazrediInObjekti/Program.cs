@@ -1,14 +1,23 @@
-﻿namespace RazrediInObjekti
+﻿using System.Runtime.CompilerServices;
+
+namespace RazrediInObjekti
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             // Naredimo instanco razreda Table
-            Table miza = new Table();
+            Table miza = new Table(); // Privzeti konstruktor
             miza.material = "les";
             miza.numLegs = 4;
             miza.area = 2.5;
+            miza.color = "beljena bukev";
+            miza.personSeats = 2;
+
+            Table klubska = new Table();
+            klubska.material = "steklo";
+            klubska.numLegs = 0;
+            klubska.personSeats = 8;
 
             Table klop = new Table();
             klop.material = "les/karbonska vlakna";
@@ -49,8 +58,8 @@
             vremeJutri.WriteProperties();
 
             // Ponovno nastavimo lastnost merjenja
-            vreme.MeasurementTime = DateTime.Now;
-                        
+            //vreme.MeasurementTime = DateTime.Now;
+
             Console.WriteLine($"Vreme danes ob {vreme.MeasurementTime:HH:mm:ss} je takšno, " +
                 $"da imamo:\n{vreme.Temperature} stopinj celzija, " +
                 $"\n{vreme.AirPressure} mbar zračnega tlaka in " +
@@ -59,9 +68,10 @@
 
             string fileName = "msrmnts.mes";
 
-            for (int i = 0; i < 10; i++)
+            int stMeritev = 100;
+            for (int i = 0; i < stMeritev; i++)
             {
-                WriteMeasurements(fileName);
+                WriteMeasurements(fileName, DateTime.Now.AddDays(-stMeritev + i + 1));
             }
 
             // Pokličimo metodo za zbiranje podatkov iz datoteke
@@ -71,6 +81,16 @@
             // naredimo statično metodo v razredu WeatherMeasurement
             double avgTemperature = WeatherMeasurement.ComputeAverageTemperature(meritve);
             Console.WriteLine($"Povprečna temperatura meritev je {avgTemperature}.");
+            // Lahko uporabimo tudi že obstoječo metodo,
+            // ki uporablja lambda izraze...
+            double avgTemperature2 = meritve.Average(obj => obj.Temperature);
+            Console.WriteLine($"Povprečna temperatura meritev (z lambdo) je {avgTemperature2}.");
+
+            double avgHitrostVetra = meritve.Average(obj => obj.WindSpeed);
+            Console.WriteLine($"Povprečna hitrost vetra meritev (z lambdo) je {avgHitrostVetra}.");
+
+            double maxZracniTlak = meritve.Max(obj => obj.AirPressure);
+            Console.WriteLine($"Maksimalni zračni tlak meritev (z lambdo) je {maxZracniTlak}.");
 
             Console.Read();
         }
@@ -78,15 +98,16 @@
         /// <summary>
         /// Pomožna metoda za zapis slučajnih vremenskih podatkov
         /// </summary>
-        static void WriteMeasurements(string fileName)
+        static void WriteMeasurements(string fileName, DateTime time)
         {
             StreamWriter sw = new StreamWriter(fileName, true);
 
-            sw.WriteLine(DateTime.Now);
+            // Zapišimo eno meritev v vrstico
+            sw.Write($"{time}\t");
             Random rnd = new Random();
-            sw.WriteLine(rnd.Next(-2, 12));
-            sw.WriteLine(rnd.Next(800, 1200));
-            sw.WriteLine(rnd.Next(0, 7));
+            sw.Write(rnd.Next(-2, 23) + "\t");
+            sw.Write(rnd.Next(800, 1200) + "\t");
+            sw.WriteLine(rnd.Next(0, 36));
 
             sw.Close();
         }
@@ -101,31 +122,18 @@
             StreamReader srFile = new StreamReader(fileName);
             List<WeatherMeasurement> lstMeasurements = new List<WeatherMeasurement>();
 
-            int counter = 0;
-            WeatherMeasurement weatherMeasurement = new WeatherMeasurement();
+            int counter = 0;            
             while (srFile.EndOfStream == false)
             {
-                string line = srFile.ReadLine();
+                string[] line = srFile.ReadLine().Split('\t');
                 counter++;
 
-                switch (counter % 4)
-                {
-                    case 1:
-                        weatherMeasurement.MeasurementTime = DateTime.Parse(line);
-                        break;
-                    case 2:
-                        weatherMeasurement.Temperature = double.Parse(line);
-                        break;
-                    case 3:
-                        weatherMeasurement.AirPressure = double.Parse(line);
-                        break;
-                    case 0:
-                        weatherMeasurement.WindSpeed = double.Parse(line);
-                        lstMeasurements.Add(weatherMeasurement);
-                        // Ponastavimo vrednosti tekoče spremenljivke
-                        weatherMeasurement = new WeatherMeasurement();
-                        break;
-                }
+                WeatherMeasurement weatherMeasurement = new WeatherMeasurement(DateTime.Parse(line[0]));
+                weatherMeasurement.Temperature = double.Parse(line[1]);
+                weatherMeasurement.AirPressure = double.Parse(line[2]);
+                weatherMeasurement.WindSpeed = double.Parse(line[3]);
+                
+                lstMeasurements.Add(weatherMeasurement);
             }
             srFile.Close();
             return lstMeasurements;
@@ -142,11 +150,18 @@
         // Spremenljivke morajo imeti
         // določilo public, da jih
         // lahko nastavljamo tudi izven razreda
-        public string material = "";
+        // To so objektne spremenljivke (nimajo določila statičnosti)
+        public string material;
         public int numLegs;
         public double area;
+        public string color;
+        public int personSeats;
 
-        public static double hourlyRate; 
+        /// <summary>
+        /// Urna postavka za izdelavo
+        /// Spremenljivka je statična
+        /// </summary>
+        public static double hourlyRate;
     }
 
     public class Book
@@ -163,11 +178,13 @@
 
     public class Dress
     {
+        // Konstruktor
         public Dress(string designedBy)
         {
-            Designer = designedBy;
+            this.Designer = designedBy;
         }
 
+        // Prazen konstruktor
         public Dress()
         {
             Designer = "Gucci";
@@ -180,7 +197,7 @@
         // Definicija lastnosti
         public string Designer
         {
-            get
+            get // Element za pridobivanje vrednosti lastnosti
             {
                 return designer;
             }
@@ -221,8 +238,20 @@
             }
         }
 
+        private double temperature;
+        public double Temperature
+        {
+            get { return temperature; }
+            set
+            {
+                if (value < -40 || value > 55)
+                    throw new ArgumentException("Vnesite temperaturo, ki je v predvidenih okvirjih.");
+
+                temperature = value;
+            }
+        }
+
         // Samodejna implementacija lastnosti
-        public double Temperature { get; set; }
         public double AirPressure { get; set; }
         public double WindSpeed { get; set; }
 
@@ -231,7 +260,8 @@
         /// </summary>
         public void WriteProperties()
         {
-            Console.WriteLine($"Vreme danes ob {this.MeasurementTime:HH:mm:ss} je takšno, " +
+            Console.WriteLine($"Vreme dne {this.MeasurementTime:d. M. yyyy} ob {this.MeasurementTime:HH:mm:ss} " +
+                $"je takšno, " +
                 $"da imamo:\n{this.Temperature} stopinj celzija, \n" +
                 $"{this.AirPressure} mbar zračnega tlaka in \n" +
                 $"hitrost vetra {this.WindSpeed} m/s");
@@ -241,7 +271,7 @@
         /// Izračuna povprečno temperaturo iz danega seznama objektov.
         /// </summary>
         public static double ComputeAverageTemperature(List<WeatherMeasurement> lstWeatherMsrmnts)
-        {    
+        {
             // Način, ki ga poznamo
             double sum = 0;
             foreach (var wm in lstWeatherMsrmnts)
