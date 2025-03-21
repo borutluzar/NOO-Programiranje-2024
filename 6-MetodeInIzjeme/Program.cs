@@ -35,16 +35,17 @@ namespace Methods
             int sum = SumThree(1, 10, 100);
             Console.WriteLine($"Naš rezultat je {sum}");
 
-            // Zgled: Metoda za izračun indeksa telesne mase
             /*
+            // Zgled: Metoda za izračun indeksa telesne mase
             Console.Write("Vpišite svojo telesno maso (v kg): ");
             double mass = double.Parse(Console.ReadLine());
             Console.Write("Vpišite svojo telesno višino (v m): ");
             double height = double.Parse(Console.ReadLine());
 
-            double bmi = BodyMassIndex(mass,height);
+            double bmi = BodyMassIndex(mass, height);
             Console.WriteLine($"Indeks naše telesne mase je: {bmi:0.00}");
             */
+
 
             // Klic metode Quotient
             double quotient = Quotient(12, 13);
@@ -55,8 +56,8 @@ namespace Methods
             // ki so pisali izpit in njihovo število točk,
             // izračuna pa povprečno oceno vseh.
             /*
-            double rezultat = PovprecnaOcena();
-            Console.WriteLine($"Povprečna ocena izpita je bila {rezultat:0.00}");
+            double rezultat2 = PovprecnaOcena();
+            Console.WriteLine($"Povprečna ocena izpita je bila {rezultat2:0.00}");
             */
 
             // Zgled - Naloga 1 iz drugega izpita 2023
@@ -65,10 +66,13 @@ namespace Methods
             */
 
             // Primer klica metode iz novega (razred MojeMetode) razreda
+            Methods.MySuperApplicableMethods.MojeMetode.MojaMetoda();
             Methods.MySuperApplicableMethods.DrugRazred.MojaMetoda();
-            
+            Methods.MySuperApplicableMethods2.DrugRazred.MojaMetoda();
+
 
             // Izjeme
+            
             /*
             Console.Write($"Vpišite vaše število: ");            
             int mojeStevilo = int.Parse(Console.ReadLine());
@@ -79,7 +83,8 @@ namespace Methods
             // Pokličimo metodo GetOperator (vpeljava stavkov throw in try-catch)
             try
             {
-                string oprt = GetOperator(5);
+                byte n = 5;
+                string oprt = GetOperator(n);
                 Console.WriteLine($"Operator je {oprt}");
             }
             catch (Exception ex)
@@ -89,7 +94,7 @@ namespace Methods
 
             // Primer napake pri delu s tabelo
             string[] tblZivali = new string[5] { "puran", "glista", "svinja", "zebra", "mravljinčar" };
-                        
+
             try
             {
                 Console.WriteLine($"{tblZivali[5]}");
@@ -102,12 +107,12 @@ namespace Methods
             {
                 Console.WriteLine($"Prišlo je do neke popolnoma druge napake:\n{ex.Message}");
             }
-            
+
 
             // In še klic metode GetPatientsHeight            
             int patientsHeight = GetPatientsHeight();
             Console.WriteLine($"Višina pacienta je {patientsHeight}");
-            
+
 
             //Console.Read();
 
@@ -116,7 +121,7 @@ namespace Methods
             //WriteGCDForPairs(15);
 
             // Pokličimo še metodo, ki lovi izjeme
-            //CatchException();
+            CatchException();
 
             // Še ena funkcija z nekaj več opravili
             ComputingQuestions();
@@ -130,7 +135,7 @@ namespace Methods
         /// </summary>
         static void Pozdrav()
         {
-            Console.WriteLine("Hello, world! How are you?");            
+            Console.WriteLine("Hello, world! How are you?");
         }
 
         static double PovprecnaOcena()
@@ -197,12 +202,14 @@ namespace Methods
             return bmi;
         }
 
-
         /// <summary>
         /// Metoda kot parametra prejme dve celi števili,
         /// vrača pa realno število, ki predstavlja
-        /// kvocient parametrov.
+        /// količnik parametrov.
         /// </summary>
+        /// <param name="a">Deljenec</param>
+        /// <param name="b">Delitelj</param>
+        /// <returns>Količnik deljenca in delitelja.</returns>
         static double Kvocient(int a, int b)
         {
             double result = (double)a / b;
@@ -231,7 +238,7 @@ namespace Methods
             Feet = 1
         }
 
-        
+
         static MetricType metricType = 0;
 
         static int GetPatientsHeight()
@@ -239,7 +246,7 @@ namespace Methods
             int height = 0;
             while (height == 0)
             {
-                Console.Write($"Vpišite svojo višino (v centimetrih): ");
+                Console.Write($"Vpišite pacientovo višino (v centimetrih): ");
                 string answer = Console.ReadLine();
                 if (answer.Length == 0)
                     answer = null;
@@ -252,7 +259,6 @@ namespace Methods
                     int lower = 45; // V idealnem primeru vrednost preberemo iz konfiguracijske datoteke
                     int upper = 300;
                     ValidateHeight(height, lower, upper, metricType);
-
                 }
                 catch (FormatException)
                 {
@@ -284,6 +290,15 @@ namespace Methods
             return height;
         }
 
+        /// <summary>
+        /// ...
+        /// </summary>
+        /// <param name="height"></param>
+        /// <param name="lowerBound"></param>
+        /// <param name="upperBound"></param>
+        /// <param name="metType"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         private static bool ValidateHeight(int height, int lowerBound, int upperBound, MetricType metType)
         {
             if (metType == MetricType.Meters)
@@ -294,7 +309,7 @@ namespace Methods
                 }
                 return true;
             }
-            else if(metType == MetricType.Feet)
+            else if (metType == MetricType.Feet)
             {
                 return true;
             }
@@ -392,7 +407,7 @@ namespace Methods
                 finally
                 {
                     Console.WriteLine("Na tem mestu se metoda zaključi!\n");
-                }                
+                }
             }
         }
 
@@ -450,7 +465,7 @@ namespace Methods
                 finally
                 {
                     Console.WriteLine();
-                }                
+                }
             }
             return countCorrect;
         }

@@ -6,12 +6,12 @@ namespace FilesAndStrings
     internal class Program
     {
         static void Main(string[] args)
-        {
+        {            
             // ***********************************************
             // Nizi
 
             // Delo z nizi bomo opisali v metodi StringManipulation.
-            StringManipulation();
+            //StringManipulation();
 
 
 
@@ -28,11 +28,10 @@ namespace FilesAndStrings
 
 
             // Primer branja iz datoteke
-            /*
             List<string> lstNews = ReadNews();
             foreach (string title in lstNews)
                 Console.WriteLine(title);
-            */
+
             Console.Read();
         }
 
@@ -47,8 +46,8 @@ namespace FilesAndStrings
 
 
             // Z datoteko se povežemo s pomočjo razreda StreamWriter
-            StreamWriter swFile = new StreamWriter("mojaPrvaDatoteka.txt", true); // Relativna pot do datoteke
-            
+            StreamWriter swFile = new StreamWriter($"mojaPrvaDatoteka.borut", true); // Relativna pot do datoteke
+
             // Pridobimo trenutni čas in datum
             DateTime dtNow = DateTime.Now;
 
@@ -60,7 +59,7 @@ namespace FilesAndStrings
             swFile.Flush(); // Funkcija, ki omogoča sprotni zapis v datoteko (že preden jo zapremo)
 
             swFile.WriteLine("Sončno");
-            swFile.WriteLine("Raje bi bili zunaj, čeprav se že mrači.");            
+            swFile.WriteLine("Raje bi bili zunaj, čeprav se že mrači.");
 
             // Zaprimo datoteko
             swFile.Close();
@@ -89,7 +88,7 @@ namespace FilesAndStrings
         /// </summary>
         static void ReadingFromFiles()
         {
-            string fileName = "mojaPrvaDatoteka.txt";
+            string fileName = "mojaPrvaDatoteka.borut";
             StreamReader srFile = new StreamReader(fileName);
 
             Console.WriteLine($"Beremo iz datoteke {fileName}\n");
@@ -117,7 +116,6 @@ namespace FilesAndStrings
             srFile.Close();
         }
 
-
         static void StringManipulation()
         {
             // Dani niz razbijemo na več vrednosti glede na podane separatorje z metodo Split
@@ -126,9 +124,9 @@ namespace FilesAndStrings
             string suroviPodatki = "Janez,Novak,33,185,90,rdeča,samozaposlen";
 
             // Uporabimo metodo Split, ki vrne tabelo nizov
-            string[] podatki = suroviPodatki.Split(',');
+            string[] tblPodatki = suroviPodatki.Split(",");
             // Izpišimo jih
-            foreach (string podatek in podatki)
+            foreach (string podatek in tblPodatki)
             {
                 Console.WriteLine(podatek);
             }
@@ -138,13 +136,13 @@ namespace FilesAndStrings
             // pridobljene podatke tudi validiramo. 
             // Za zgornje podatke imamo naslednjo shemo:
             // Ime, Priimek, Starost, Višina, Teža, Barva oči, Zaposlitveni status
-            string ime = podatki[0];
-            string priimek = podatki[1];
-            int starost = int.Parse(podatki[2]);
-            int visina = int.Parse(podatki[3]);
-            int teza = int.Parse(podatki[4]);
-            string barvaOci = podatki[5];
-            string zaposlitveniStatus = podatki[6];
+            string ime = tblPodatki[0];
+            string priimek = tblPodatki[1];
+            int starost = int.Parse(tblPodatki[2]);
+            int visina = int.Parse(tblPodatki[3]);
+            int teza = int.Parse(tblPodatki[4]);
+            string barvaOci = tblPodatki[5];
+            string zaposlitveniStatus = tblPodatki[6];
             Console.WriteLine($"Oseba {ime} {priimek} ima {starost} let, " +
                 $"visoka je {visina} cm in težka {teza} kg, " +
                 $"barva njenih oči je {barvaOci}, " +
@@ -155,16 +153,17 @@ namespace FilesAndStrings
             // pomenita polje, vendar z vrednostjo "praznega" niza) izločimo
             // z uporabo lastnosti StringSplitOptions.RemoveEmptyEntries
             string abeceda = "  alfa,beta\t gama \tdelta,kappa,,,omega  \t ";
-            var testSplit = abeceda.Split(',', '\t');
             Console.WriteLine($"Izpis pred Trim(): [{abeceda}]");
+            
+            var testSplit = abeceda.Split(',', '\t');            
             abeceda = abeceda.Trim();
             Console.WriteLine($"Izpis po Trim(): [{abeceda}]");
 
 
             // Določimo množico ločil
-            char[] znaki = new char[] { ',', '\t' };
+            char[] separatorji = new char[] { ',', '\t' };
             // In zahtevajmo izločitev praznih polj
-            string[] podatkiTab = abeceda.Split(znaki, StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+            string[] podatkiTab = abeceda.Split(separatorji, StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
 
             // Če želimo vklopiti več StringSplit možnosti, to storimo z operatorjem |
             //string[] podatkiTab = abeceda.Split(znaki, StringSplitOptions.RemoveEmptyEntries|StringSplitOptions.TrimEntries);
@@ -189,12 +188,13 @@ namespace FilesAndStrings
             // Funkcija Substring
             string emso = "0101023500001";
             string letnica = emso.Substring(4, 3); // 023
+            char prviZnakOrig = letnica[0];
             string prviZnak = letnica[0].ToString();
             Console.WriteLine(emso.Substring(4, 3));
             
 
-            int letoRojstva = int.Parse(emso.Substring(4, 3));
-            if (emso[4] == '0')
+            int letoRojstva = int.Parse(emso.Substring(4, 3)); // 23
+            if (emso[4] == '0' || emso[4] == '1')
             {
                 letoRojstva += 2000;
             }
@@ -204,9 +204,9 @@ namespace FilesAndStrings
             }
             Console.WriteLine($"Leto rojstva: {letoRojstva}");
 
-            // Andrejev predlog
-            int letoRojstvaAndrej = 0;
-            if (emso[4] == '0')
+            // Druga možnost
+            int letoRojstvaDva = 0;
+            if (emso[4] == '0' || emso[4] == '1')
             {
                 letnica = "2" + letnica;
             }
@@ -214,13 +214,13 @@ namespace FilesAndStrings
             {
                 letnica = "1" + letnica;
             }
-            letoRojstvaAndrej = int.Parse(letnica);
+            letoRojstvaDva = int.Parse(letnica);
 
 
             // Nize lahko obravnavamo kot tabele znakov.
             // Po nizu se tako lahko sprehodimo z zanko foreach
             // in pregledamo vse njegove znake.
-            int stevilo0 = 0;            
+            int stevilo0 = 0; 
             foreach (char znak in emso)
             {
                 Console.WriteLine(znak);
@@ -263,7 +263,9 @@ namespace FilesAndStrings
                 string searchByStart = "<h3 class=\"title-cut-4-rows\">";
                 int indexStart = response.IndexOf(searchByStart);
                 if (indexStart < 0)
+                {
                     break;
+                }
 
                 string newsTitle = response.Substring(indexStart);
 

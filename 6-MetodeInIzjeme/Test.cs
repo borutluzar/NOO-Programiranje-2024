@@ -25,3 +25,13 @@ namespace Methods.MySuperApplicableMethods
         }
     }
 }
+namespace Methods.MySuperApplicableMethods2
+{
+    public class DrugRazred
+    {
+        public static void MojaMetoda()
+        {
+            Console.WriteLine($"Nekaj čisto drugega!");
+        }
+    }
+}

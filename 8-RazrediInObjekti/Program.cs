@@ -1,18 +1,25 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace RazrediInObjekti
 {
     internal class Program
     {
+        static int hourlyRateTest;
+
         static void Main(string[] args)
         {
             // Naredimo instanco razreda Table
-            Table miza = new Table(); // Privzeti konstruktor
+            Table miza; 
+            miza = new Table(); // Privzeti konstruktor                        
             miza.material = "les";
             miza.numLegs = 4;
             miza.area = 2.5;
             miza.color = "beljena bukev";
             miza.personSeats = 2;
+
+            Table miza2 = miza;
+            miza = new Table();
 
             Table klubska = new Table();
             klubska.material = "steklo";
@@ -24,16 +31,18 @@ namespace RazrediInObjekti
             klop.numLegs = 4;
             klop.area = 1.5;
 
+
             // Določimo še vrednost statične spremenljivke,
             // ki je enaka za izdelavo vsake mize
             Table.hourlyRate = 50.0;
+            hourlyRateTest = 30;            
 
 
             Dress obleka = new Dress("Versaci");
             Dress oblekaZaVSluzbo = new Dress("Versaci");
             Dress oblekaZaNaRekreacijo = new Dress("Mura");
             Dress oblekaZaPosebnePriložnosti = new Dress();
-
+            
             // Pridobivanje vrednosti - get
             Console.WriteLine($"Designer obleke je {obleka.Designer}");
             // Nastavljanje vrednosti - set
@@ -152,7 +161,7 @@ namespace RazrediInObjekti
         // lahko nastavljamo tudi izven razreda
         // To so objektne spremenljivke (nimajo določila statičnosti)
         public string material;
-        public int numLegs;
+        public int numLegs = 1;
         public double area;
         public string color;
         public int personSeats;
@@ -187,7 +196,7 @@ namespace RazrediInObjekti
         // Prazen konstruktor
         public Dress()
         {
-            Designer = "Gucci";
+            this.Designer = "Gucci";
         }
 
         // Inicializacija spremenljivke,
@@ -201,7 +210,7 @@ namespace RazrediInObjekti
             {
                 return designer;
             }
-            set
+            set // Element za nastavljanje vrednosti lastnosti
             {
                 designer = value;
             }
@@ -219,7 +228,7 @@ namespace RazrediInObjekti
         // Konstruktor z enim parametrom
         public WeatherMeasurement(DateTime time)
         {
-            measurementTime = time;
+            measurementTime = time;            
         }
 
         private DateTime measurementTime;
@@ -241,7 +250,10 @@ namespace RazrediInObjekti
         private double temperature;
         public double Temperature
         {
-            get { return temperature; }
+            get 
+            { 
+                return temperature; 
+            }
             set
             {
                 if (value < -40 || value > 55)
