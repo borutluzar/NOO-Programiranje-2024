@@ -30,7 +30,7 @@ namespace RazrediInObjekti
             klop.material = "les/karbonska vlakna";
             klop.numLegs = 4;
             klop.area = 1.5;
-
+            
 
             // Določimo še vrednost statične spremenljivke,
             // ki je enaka za izdelavo vsake mize
@@ -56,6 +56,11 @@ namespace RazrediInObjekti
             vreme.AirPressure = 1100;
             vreme.WindSpeed = 0.2;
 
+            /*
+            DateTime danesZdaj = DateTime.Now;
+            DateTime jutri = danesZdaj.AddDays(1);
+            */
+
             WeatherMeasurement vremeJutri = new WeatherMeasurement(DateTime.Now.AddDays(1));
             //vreme.measurementTime = DateTime.Now;
             vremeJutri.Temperature = 23;
@@ -65,11 +70,11 @@ namespace RazrediInObjekti
             // Klic objektne metode
             vreme.WriteProperties();
             vremeJutri.WriteProperties();
-
+            
             // Ponovno nastavimo lastnost merjenja
             //vreme.MeasurementTime = DateTime.Now;
 
-            Console.WriteLine($"Vreme danes ob {vreme.MeasurementTime:HH:mm:ss} je takšno, " +
+            Console.WriteLine($"Vreme danes ob {vreme.MeasurementTime:HH:mm:ss} je, " +
                 $"da imamo:\n{vreme.Temperature} stopinj celzija, " +
                 $"\n{vreme.AirPressure} mbar zračnega tlaka in " +
                 $"\nhitrost vetra {vreme.WindSpeed} m/s");
@@ -88,18 +93,22 @@ namespace RazrediInObjekti
 
             // Izračunajmo povprečno temperaturo
             // naredimo statično metodo v razredu WeatherMeasurement
-            double avgTemperature = WeatherMeasurement.ComputeAverageTemperature(meritve);
+            double avgTemperature = WeatherMeasurement.ComputeAverageTemperature(meritve);            
+
             Console.WriteLine($"Povprečna temperatura meritev je {avgTemperature}.");
             // Lahko uporabimo tudi že obstoječo metodo,
             // ki uporablja lambda izraze...
-            double avgTemperature2 = meritve.Average(obj => obj.Temperature);
+            double avgTemperature2 = meritve.Average(x => x.Temperature);
             Console.WriteLine($"Povprečna temperatura meritev (z lambdo) je {avgTemperature2}.");
 
             double avgHitrostVetra = meritve.Average(obj => obj.WindSpeed);
             Console.WriteLine($"Povprečna hitrost vetra meritev (z lambdo) je {avgHitrostVetra}.");
 
-            double maxZracniTlak = meritve.Max(obj => obj.AirPressure);
+            double maxZracniTlak = meritve.Min(obj => obj.AirPressure);
             Console.WriteLine($"Maksimalni zračni tlak meritev (z lambdo) je {maxZracniTlak}.");
+
+            var urejeneMeritvePoTemp = meritve.OrderBy(m => m.Temperature);
+            var urejeneMeritvePoTempNavzdol = meritve.OrderByDescending(m => m.Temperature);
 
             Console.Read();
         }

@@ -9,7 +9,7 @@ namespace DedovanjeInPolimorfizmi
         {
             // Naredimo instanco razreda Object
             // Vsi razredi v C# dedujejo od razreda Object
-            Object obj = new object();
+            object obj = new object();
             obj.ToString();
             Console.WriteLine($"Klic metode ToString na objektu {nameof(obj)}: {obj.ToString()}");
 
@@ -31,7 +31,6 @@ namespace DedovanjeInPolimorfizmi
             Console.WriteLine($"Opis kolesa {nameof(eKolo)}: {eKolo.ToString()}");
 
             MountainBike gorsko = new MountainBike(15); // EBike deduje od Bicycle
-
 
             // Konstruktorji podrazredov
             Coffee kava = new Coffee(3);
@@ -116,9 +115,9 @@ namespace DedovanjeInPolimorfizmi
         public override string ToString()
         {
             string rezultat = $"Lastnosti mojega kolesa so:\n" +
-                    $"Velikost okvirja: {this.FrameSize}\n" +
-                    $"Število prestav: {this.NumGears}\n" +
-                    $"Znamka: {this.Brand}";
+                                $"Velikost okvirja: {this.FrameSize}\n" +
+                                $"Število prestav: {this.NumGears}\n" +
+                                $"Znamka: {this.Brand}";
 
             return rezultat;
         }
@@ -126,7 +125,7 @@ namespace DedovanjeInPolimorfizmi
         public virtual void ChangeGear(int increaseBy)
         {
             this.CurrentGear += increaseBy;
-        }
+        }        
     }
 
     // Nadrazred označimo za dvopičjem
@@ -143,7 +142,7 @@ namespace DedovanjeInPolimorfizmi
             return rezultat;
         }
 
-        // Rahlo popravimo metodo iz nadrazreda
+        // Rahlo popravimo metodo iz nadrazreda        
         public override void ChangeGear(int increaseBy)
         {
             //this.CurrentGear += increaseBy;
@@ -164,8 +163,6 @@ namespace DedovanjeInPolimorfizmi
             TireWidth = tireWidth;
         }
     }
-
-
 
     public class Coffee
     {
