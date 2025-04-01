@@ -8,9 +8,7 @@ namespace Izpit_2023_04_08
     /// Vaše rešitve zapisujte v datoteke z imeni NalogaX,
     /// kjer je X številka naloge.
     /// 
-    /// Pri reševanju si lahko pomagate s kodo, ki je na voljo tej rešitvi,
-    /// ter tudi z uradno dokumentacijo o C# in .Net 
-    /// (torej z vsemi viri na domeni learn.microsoft.com).
+    /// Pri reševanju si lahko pomagate s kodo, ki je na voljo tej rešitvi.
     /// 
     /// NE SMETE uporabljati drugih virov.
     /// 
