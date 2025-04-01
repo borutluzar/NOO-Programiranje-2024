@@ -129,5 +129,5 @@ namespace Izpit_2023_04_08
 
             return output.ToString();
         }
-    }
+    }    
 }
