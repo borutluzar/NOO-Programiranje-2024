@@ -27,33 +27,5 @@
             string filePath2 = "Viri/besedeBig.txt";
 
         }
-
-        public int ReadingFromFiles(string pot)
-        {
-            int stNizov = 0;
-
-            StreamReader srFile = new StreamReader(pot);
-
-            while (srFile.EndOfStream == false)
-            {
-                string line = srFile.ReadLine();
-
-                string[] tblPodatki = line.Split("\t");
-                // Izpišimo jih
-                foreach (string podatek in tblPodatki)
-                {
-                    int zadnji = podatek.Length;
-                    if ((podatek[zadnji - 1] == 'a') || (podatek[zadnji - 1] == 'A'))
-                    {
-                        stNizov++;
-                    }
-
-                    /// Ob pregledu nizov naj na zaslon izpiše vsak niz, ki vsebuje števko 1. 
-                    
-                }
-            }
-            srFile.Close();
-            return stNizov;
-        }
     }
 }

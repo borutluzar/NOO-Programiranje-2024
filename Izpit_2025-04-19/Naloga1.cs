@@ -22,23 +22,7 @@
         /// </summary>
         public static void ResitevNaloge()
         {
-            List<int> list = new List<int>() { 50, 56, 89, 78, 12 };
-            Console.WriteLine("Vsota produktov: " + ProduktStevk(list));
-        }
-
-        public static int ProduktStevk(List<int> seznam)
-        {
-            int vsotaproduktov = 0;
-
-            foreach (int i in seznam)
-            {
-                int produkt = 0;
-
-                /* Manjkajoči del */
-
-                vsotaproduktov += produkt;
-            }
-            return vsotaproduktov;
+            
         }
     }
 }
