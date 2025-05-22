@@ -22,42 +22,6 @@
         /// </summary>
         public static void ResitevNaloge()
         {
-            List<int> stevila = new List<int>() { 23, 125, 9, 1287, 11111111 };
-            Console.WriteLine($"Skupna vsota vseh štvil je: {ProduktStevk(stevila)}");
-
-            /*
-            string pod = "Ananas je 54 južno 093 sa5dj32e, ki je 109 lah0ko ki78sl0o";
-
-            string rezultat = PrimerNaPonavljanju(pod);
-            Console.WriteLine($"Rešitev je: {rezultat}");
-
-            // ali
-
-            Console.WriteLine($"Rešitev je: {PrimerNaPonavljanju(pod)}");
-            */
-        }
-
-        public static int ProduktStevk(List<int> stevila)
-        {
-            int vsota = 0;
-            foreach (int stevilo in stevila)
-            {
-                //razbijemo st. 23 na števke
-                string str = stevilo.ToString();
-                int produkt = 1;
-                foreach (char chrStevka in str)
-                {
-                    int stevka = int.Parse(chrStevka.ToString());
-                    produkt *= stevka;
-
-                }
-                vsota += produkt;
-                if (produkt < 50)
-                {
-                    Console.WriteLine(stevilo);
-                }
-            }
-            return vsota;
 
         }
 
