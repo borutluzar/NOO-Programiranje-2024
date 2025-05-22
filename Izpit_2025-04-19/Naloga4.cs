@@ -26,6 +26,41 @@
             string filePath1 = "Viri/besede.txt";
             string filePath2 = "Viri/besedeBig.txt";
 
+            int rezultat1 = Analiziraj(filePath1);
+            int rezultat2 = Analiziraj(filePath2);
+
+            Console.WriteLine(rezultat1);
+            Console.WriteLine(rezultat2);
+        }
+
+        /// Pripravite funkcijo, ki kot parameter dobi pot do datoteke. 
+        /// V podani datoteki naj prešteje vse nize, ki se končajo s črko 'a',
+        /// in dobljeno število vrne.           
+        /// Ob pregledu nizov naj na zaslon izpiše vsak niz, ki vsebuje števko 1.       [20 točk]
+        public static int Analiziraj(string pot)
+        {
+            StreamReader sr = new StreamReader(pot);
+            int vsota = 0;
+            while (!sr.EndOfStream)
+            {
+                string vrstica = sr.ReadLine();
+                string[] nizi = vrstica.Split("\t");
+
+                foreach (string beseda in nizi)
+                {
+                    if (beseda.EndsWith('a') || beseda.EndsWith('A'))
+                    {
+                        vsota++;
+                    }
+
+                    if (beseda.Contains("1"))
+                    {
+                        Console.WriteLine(beseda);
+                    }
+                }
+            }
+            sr.Close();
+            return vsota;
         }
     }
 }
