@@ -22,68 +22,7 @@
         /// </summary>
         public static void ResitevNaloge()
         {
-            List<int> stevila = new List<int>() { 23, 125, 9, 1287, 11111111 };
-            Console.WriteLine($"Skupna vsota vseh štvil je: {ProduktStevk(stevila)}");
-        }
 
-        public static int ProduktStevk(List<int> stevila)
-        {
-            int vsota = 0;
-            foreach (int stevilo in stevila)
-            {
-                //razbijemo st. 23 na števke
-                string str = stevilo.ToString();
-                int produkt = 1;
-                foreach (char chrStevka in str)
-                {
-                    int stevka = int.Parse(chrStevka.ToString());
-                    produkt *= stevka;
-
-                }
-                vsota += produkt;
-                if (produkt < 50)
-                {
-                    Console.WriteLine(stevilo);
-                }
-            }
-            return vsota;
-
-        }
-
-        /// <summary>
-        /// Iz besedila pobriše vse števke.
-        /// </summary>
-        private static string PrimerNaPonavljanju(string podatek)
-        {
-            char[] stevila = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-            string novPodatek = "";
-
-            
-            // Prvi način
-            foreach (char znak in podatek)
-            {
-                // Če znak ni število, ga dodamo v nov niz
-                if (stevila.Contains(znak) == false) // lahko tudi: if (!stevila.Contains(znak))
-                {
-                    novPodatek += znak;
-                }
-            }            
-
-            /*
-            // Drugi način
-            for (int i = 0; i < podatek.Length; i++)
-            {
-                // Če znak je število, ga nadomestimo s praznim stringom ("")
-                if (stevila.Contains(podatek[i]))
-                {
-                    podatek = podatek.Remove(i, 1);
-                    i = i - 1;
-                }
-            }
-            novPodatek = podatek;
-            */
-
-            return novPodatek;
         }
     }
 }

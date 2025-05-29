@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Izpit_2025-04-05", "Izpit_2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Izpit_2025-04-19", "Izpit_2025-04-19\Izpit_2025-04-19.csproj", "{E52DD438-0B59-4D47-9D8C-02E6565F58CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Izpit_2025-05-29", "Izpit_2025-05-29\Izpit_2025-05-29.csproj", "{3AF5F634-51FD-42F7-AE38-821AD7BBFCCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{E52DD438-0B59-4D47-9D8C-02E6565F58CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E52DD438-0B59-4D47-9D8C-02E6565F58CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E52DD438-0B59-4D47-9D8C-02E6565F58CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AF5F634-51FD-42F7-AE38-821AD7BBFCCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AF5F634-51FD-42F7-AE38-821AD7BBFCCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AF5F634-51FD-42F7-AE38-821AD7BBFCCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AF5F634-51FD-42F7-AE38-821AD7BBFCCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
