@@ -2,28 +2,23 @@
 {
     /// <summary>
     /// NALOGA 3:
-    /// Pripravite razreda Izpit in IzpitnaNaloga.
+    /// Pripravite razreda Predmetnik in Predmet.
     /// 
-    /// Razred IzpitnaNaloga naj vsebuje:
-    /// -   Lastnosti ZaporednaStevilka, Tezavnost (od 1 do 5), SteviloTock, Besedilo.
-    /// -   Natanko en konstruktor, ki nastavi vsaj dve lastnosti.                      
-    /// -   Funkcijo ToString, ki naj izpiše vse podatke o nalogi.         [8 točk]
+    /// Razred Predmet naj vsebuje:
+    /// -   Lastnosti Naziv, Predavatelj, SteviloKreditnihTock, SteviloKontaktnihUr.
+    /// -   Konstruktor, ki nastavi vsaj dve lastnosti. 
+    /// -   Funkcijo ToString, ki naj izpiše vse podatke o predmetu.                            [8 točk]
     /// 
-    /// Razred Izpit naj vsebuje: 
-    /// -   Lastnosti ImePredmeta, ZaporednaStevilka (prvi, drugi, ...), Datum, 
-    ///     CasPisanja (tej lastnosti lahko vrednost nastavimo samo v konstruktorju!),
-    ///     Naloge (seznam nalog).
-    /// -   En konstruktor, ki omogoča določitev natanko dveh lastnosti, 
-    ///     in en prazen konstruktor, ki naj vseeno določi čas pisanja.
-    ///     V obeh konstruktorjih inicializirajte seznam nalog.
-    /// -   Funkcijo ToString, ki naj izpiše vse podatke o izpitu.               
-    /// -   Funkcijo, ki izpiše vse izpitne naloge, 
-    ///     katerih besedilo vsebuje vsaj 300 znakov.                               [12 točk]
+    /// Razred Predmetnik naj vsebuje: 
+    /// -   Lastnosti StudijskiProgram, StudijskoLeto in
+    ///     Predmeti (seznam predmetov na predmetniku).
+    /// -   Funkcijo ToString, ki naj izpiše vse podatke o predmetniku.               
+    /// -   Funkcijo, ki vrne skupno število kreditnih točk, ki jih imajo predmeti na predmetniku.
+    /// -   Funkcijo, ki izpiše vse predmete na predmetniku, ki imajo vsaj 50 kontaktnih ur.    [12 točk]
     /// 
-    /// V funkciji ResitevNaloge kreirajte instanco razreda Izpit, 
-    /// ki naj vsebuje vsaj pet izpitnih nalog
-    /// in izpišite podatke o vseh nalogah, pri katerih lahko dosežemo vsaj 10 točk 
-    /// in katerih težavnost je nižja od 4.                                         [5 točk]
+    /// V funkciji ResitevNaloge kreirajte instanco razreda Predmetnik, 
+    /// ki naj vsebuje vsaj pet predmetov
+    /// in izpišite podatke o vseh predmetih, ki imajo vsaj 6 kreditnih točk.                   [5 točk]
     /// </summary>
     public class Naloga3
     {

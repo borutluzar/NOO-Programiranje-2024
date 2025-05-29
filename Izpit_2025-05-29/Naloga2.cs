@@ -8,23 +8,12 @@
     /// Napišite razred Knjiga, ki ima lastnosti Naslov, Avtor, LetoIzdaje, Cena in ISBN. 
     /// V razredu pripravite natanko en konstruktor, ki kot parameter dobi dve vrednosti, 
     /// kateri nastavite lastnostima LetoIzdaje in ISBN. 
-    /// Povozite tudi metodo ToString, tako da bo izpisala vse lastnosti knjige.
-    /// Napišite razred Knjiga, ki ima lastnosti Naslov, Avtor, LetoIzdaje, Cena in ISBN. 
-    /// V razredu pripravite natanko en konstruktor, ki kot parameter dobi dve vrednosti, 
-    /// kateri nastavite lastnostima LetoIzdaje in ISBN.  
     /// Povozite tudi metodo ToString, tako da bo izpisala vse lastnosti knjige.    [5 točk]
     /// 
     /// Za razred Knjiga pripravite tri podrazrede: Prirocnik, Roman in Ucbenik. 
     /// Za vsakega si zamislite po dve ustrezni specifični lastnosti in ju implementirajte. 
-    /// V vsakem od podrazredov ustrezno popravite še funkcijo ToString.
-    /// Za razred Knjiga pripravite tri podrazrede: Prirocnik, Roman in Ucbenik. 
-    /// Za vsakega si zamislite po dve ustrezni specifični lastnosti in ju implementirajte. 
     /// V vsakem od podrazredov ustrezno popravite še funkcijo ToString.            [6 točk]
     ///     
-    /// Napišite razred KnjiznaPolica, ki naj ima lastnost Knjige (seznam knjig, ki so na tej polici) 
-    /// in Lokacija (lokacijo police v založbi). 
-    /// Dodajte še funkcijo, ki vrne najstarejšo knjigo na polici, 
-    /// in funkcijo, ki vrne skupno ceno vseh knjig na polici.
     /// Napišite razred KnjiznaPolica, ki naj ima lastnost Knjige (seznam knjig, ki so na tej polici) 
     /// in Lokacija (lokacijo police v založbi). 
     /// Dodajte še funkcijo, ki vrne najstarejšo knjigo na polici,
